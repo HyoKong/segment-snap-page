@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Segment–Snap connects movable parts, motion and handles for interaction understanding in 3D scenes. A research project by Hanyang Kong and Xingyi Yang.">
+  <meta name="theme-color" content="#ffffff">
+  <title>Segment–Snap | Geometric and Semantic Coupling for 3D Interaction Understanding</title>
+  <link rel="canonical" href="https://hyokong.github.io/segment-snap-page/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hyokong.github.io/segment-snap-page/">
+  <meta property="og:title" content="Segment–Snap | Geometric and Semantic Coupling">
+  <meta property="og:description" content="Movable parts, motion, and handles: geometric and semantic coupling for interaction understanding in 3D scenes.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="wordmark" href="#overview" aria-label="Segment–Snap, back to overview">
+        Segment<span>–</span>Snap
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#qualitative">Examples</a>
+        <a class="nav-paper" href="assets/paper.pdf" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero container" id="overview" aria-labelledby="paper-title">
+      <div class="hero-recognition">
+        <a class="award-link" href="https://art3d-challenge.mooo.com/web/challenges/challenge-page/1/leaderboard/" target="_blank" rel="noopener" aria-describedby="award-scope">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 3h8v4a4 4 0 0 1-8 0V3ZM6 4H3v2a3 3 0 0 0 3 3m8-5h3v2a3 3 0 0 1-3 3m-4 2v5m-3 1h6"/></svg>
+          <span class="award-copy"><strong class="award-rank">1st place</strong><span class="award-name">Articulate3D Challenge</span></span>
+          <span class="award-arrow" aria-hidden="true">↗</span>
+        </a>
+        <p class="award-scope" id="award-scope">First in both evaluated outputs · <a href="#challenge">View results <span aria-hidden="true">↓</span></a></p>
+      </div>
+      <h1 id="paper-title"><span class="title-main">Geometric and Semantic Coupling</span><span class="title-subtitle">for Interaction Understanding in 3D Scenes</span></h1>
+      <p class="hero-summary">A door and its handle tell a shared story. We use their physical relationship to understand <strong>what moves, how it moves, and where to interact.</strong></p>
+      <div class="authors">
+        <a href="https://hyokong.github.io/" target="_blank" rel="noopener">Hanyang Kong<sup>1</sup></a>
+        <a href="https://adamdad.github.io/" target="_blank" rel="noopener">Xingyi Yang<sup>2,✉</sup></a>
+      </div>
+      <p class="affiliations"><span><sup>1</sup> National University of Singapore</span><span><sup>2</sup> The Hong Kong Polytechnic University</span></p>
+      <p class="correspondence"><span aria-hidden="true">✉</span> Corresponding author: <a href="mailto:xingyi.yang@polyu.edu.hk">Xingyi Yang</a></p>
+      <div class="hero-actions">
+        <a class="button button-primary" data-resource="paper" href="assets/paper.pdf" target="_blank" rel="noopener">
+          <img class="resource-icon" src="assets/icons/paper.svg" width="20" height="20" alt="" aria-hidden="true">Paper <span aria-hidden="true">↗</span>
+        </a>
+        <a class="button button-secondary" data-resource="code" href="https://github.com/HyoKong/Segment-Snap" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/code.svg" width="20" height="20" alt="" aria-hidden="true">Code <span aria-hidden="true">↗</span></a>
+        <a class="button button-secondary" data-resource="huggingface" href="https://huggingface.co/imsuperkong/Segment-Snap" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Hugging Face <span aria-hidden="true">↗</span></a>
+      </div>
+      <figure class="hero-figure" data-reveal>
+        <div class="figure-topline"><span class="figure-label">One scene. Connected predictions.</span><a href="assets/teaser.svg" data-lightbox data-caption="The coupling idea: handle locations guide hinges; part context refines additional handle predictions. Gains are measured over validation, not this single illustration." aria-label="Enlarge the coupling illustration">Expand figure <span aria-hidden="true">↗</span></a></div>
+        <img src="assets/teaser.svg" width="1968" height="696" alt="RGB room scan with a door. An orange arrow takes detected handle locations to hinge selection; a teal arrow takes part classes to handle-label correction. A separate joint predictor supplies extra handles." fetchpriority="high">
+        <figcaption><strong>Handles guide motion. Parts refine handles.</strong> Two directed uses of the same physical relationship, each applied once.</figcaption>
+      </figure>
+
+      <div class="gain-strip" data-reveal aria-label="Core validation gains">
+        <div class="gain-item gain-motion"><span class="gain-direction">Handles → part motion</span><div class="gain-value"><span data-evidence="f3_handles_drop">+27.25</span><span class="gain-unit">pp</span></div><p>Handle-guided hinge placement</p></div>
+        <div class="gain-item gain-proposal"><span class="gain-direction">Parts → extra handles</span><div class="gain-value"><span data-evidence="sep8_child_reference_union_step">+5.01</span><span class="gain-unit">pp</span></div><p>Complementary handle proposals</p></div>
+        <div class="gain-item gain-context"><span class="gain-direction">Part classes → handle labels</span><div class="gain-value"><span data-evidence="handle_parts_only_delta">+0.98</span><span class="gain-unit">pp</span></div><p>Part-only motion-class correction</p></div>
+      </div>
+      <p class="gain-footnote">Articulate3D validation · percentage-point changes in motion AP or handle AP, as labelled. Different mechanisms, not additive gains.</p>
+    </section>
+
+    <section class="question-section" aria-labelledby="task-heading">
+      <div class="container question-grid">
+        <div data-reveal><p class="section-index">The task</p><h2 id="task-heading">Beyond recognizing<br>the cabinet.</h2></div>
+        <div class="question-content">
+          <p class="section-lead">A static 3D scan should tell us how a scene can be interacted with—not only what objects it contains.</p>
+          <ol class="task-questions">
+            <li><span class="question-number">01</span><div><h3>What can move?</h3><p>Locate individual movable parts, such as doors and drawers.</p></div></li>
+            <li><span class="question-number">02</span><div><h3>How does it move?</h3><p>Infer rotation or translation, its axis, and the hinge location for a rotating part.</p></div></li>
+            <li><span class="question-number">03</span><div><h3>Where do we interact?</h3><p>Find the small operating regions we call handles, and associate their motion class.</p></div></li>
+          </ol>
+          <p class="task-challenge"><strong>The difficulty:</strong> broad surfaces and tiny handles need different prediction support. A closed door also hides its hinge side; a handle alone does not reveal whether its part rotates or slides.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="method" aria-labelledby="method-heading">
+      <div class="section-heading" data-reveal><div><p class="section-index">How it works</p><h2 id="method-heading">Learn the pieces.<br><span class="text-secondary">Connect the evidence.</span></h2></div><p>Three independent predictors see the same RGB point cloud. A fixed geometric decoder and a contextual label rule connect their outputs.</p></div>
+      <figure class="pipeline-figure" data-reveal>
+        <a href="assets/pipeline.svg" data-lightbox data-caption="Three independently trained predictors share the scene input. Dense handles guide the training-free motion decoder; standalone part classes correct only joint-model child handles. Final handles never feed back into motion decoding." aria-label="Enlarge the three-predictor pipeline">
+          <img src="assets/pipeline.svg" width="2016" height="864" alt="Pipeline from one RGB point cloud to three independent networks: part predictor, dense handle predictor, and joint part-handle predictor. Part surfaces and dense handles enter training-free motion decoding. Part classes and dense labels correct additional child handles before merging them with unchanged dense detections." loading="lazy">
+          <span class="enlarge-tag" aria-hidden="true">Explore the pipeline <span>+</span></span>
+        </a>
+        <figcaption>The motion decoder is training-free; the three perception networks are learned. No final-handle feedback or iterative refinement is used.</figcaption>
+      </figure>
+      <div class="predictor-list">
+        <article><span class="predictor-index teal">A</span><h3>Part predictor</h3><p>Groups broad surfaces and predicts rotation or translation. These are the final part instances, augmented with geometric motion.</p></article>
+        <article><span class="predictor-index orange">B</span><h3>Dense handle predictor</h3><p>Labels individual points and groups them into small handle instances. Their locations guide hinges; their detections stay in the final output.</p></article>
+        <article><span class="predictor-index blue">C</span><h3>Joint part-handle predictor</h3><p>Uses its own parent query features to propose associated handles. Its parts remain internal; only the additional handles enter the final output.</p></article>
+      </div>
+      <div class="physical-insight" data-reveal>
+        <div class="insight-mark" aria-hidden="true"><svg viewBox="0 0 80 80"><path d="M23 66V14h34v52M23 14l23 8v44H23"/><path class="insight-arrow" d="M49 48c-10-7-22-7-33 0m0 0 6-8m-6 8 10 1"/><circle cx="39" cy="44" r="3"/></svg></div>
+        <div><p class="mini-label">A physical clue. No motion-regression training.</p><h3>A handle helps place the hinge.</h3><p>A door handle is usually away from its hinge. We fit a box to the reliable part surface, construct candidate hinge lines, and let a nearby handle select the opposite side. Rotational axes use an upright prior; translating parts use the fitted surface’s thin direction. These explicit assumptions also define the decoder’s limits.</p></div>
+        <span class="insight-tag">Training-free<br>motion decoding</span>
+      </div>
+    </section>
+
+    <section class="results-section" id="results" aria-labelledby="results-heading">
+      <div class="container">
+        <div class="section-heading" data-reveal><div><p class="section-index">Validation</p><h2 id="results-heading">Small connections.<br><span class="text-secondary">Measurable gains.</span></h2></div><p>Controlled comparisons on <strong>42 public validation scenes</strong>. All three perception models are trained on the 195 training scenes.</p></div>
+        <div class="result-grid">
+          <article class="result-chart" data-reveal>
+            <div class="chart-heading"><span class="mini-label orange">Handles → motion</span><span class="metric-chip">Motion AP<sub>50</sub><sup>AO</sup></span></div>
+            <h3>Same part masks.<br>Better hinge placement.</h3>
+            <p>Only the origin rule changes. Masks, classes, confidence scores and axes stay fixed.</p>
+            <ol class="bar-chart motion-chart" aria-label="Motion AP: centroid origin 13.74; handle-guided origin 40.98">
+              <li><div class="bar-label"><span>Centroid origin</span><strong data-evidence="mov_centroid_joint">13.74</strong></div><div class="bar-track"><span class="bar neutral-bar" style="--bar-length:27.48%"></span></div></li>
+              <li><div class="bar-label"><span>Handle-guided origin</span><strong data-evidence="mov_handle_joint">40.98</strong></div><div class="bar-track"><span class="bar orange-bar" style="--bar-length:81.96%"></span></div></li>
+            </ol>
+            <div class="chart-axis" aria-hidden="true"><span>0</span><span>25</span><span>50 AP</span></div>
+            <div class="chart-takeaway"><strong data-evidence="f3_handles_drop">+27.25</strong><span>percentage points from the handle cue</span></div>
+          </article>
+          <article class="result-chart" data-reveal>
+            <div class="chart-heading"><span class="mini-label teal">Parts → handles</span><span class="metric-chip">Handle AP<sub>50</sub></span></div>
+            <h3>More handles.<br>Better motion labels.</h3>
+            <p>Add part-associated candidates, then use context to refine only the added handles’ classes.</p>
+            <ol class="bar-chart handle-chart" aria-label="Handle AP: dense only 24.63; child union 29.65; union with part-only labels 30.63; union with full context 30.99">
+              <li><div class="bar-label"><span>Dense detections</span><strong data-evidence="handle_dense">24.63</strong></div><div class="bar-track"><span class="bar neutral-bar" style="--bar-length:70.3714%"></span></div></li>
+              <li><div class="bar-label"><span>+ part-associated proposals</span><strong data-evidence="handle_union">29.65</strong></div><div class="bar-track"><span class="bar blue-bar" style="--bar-length:84.7143%"></span></div></li>
+              <li><div class="bar-label"><span>Union + part-only labels</span><strong data-evidence="handle_parts_only">30.63</strong></div><div class="bar-track"><span class="bar teal-bar" style="--bar-length:87.5143%"></span></div></li>
+              <li><div class="bar-label"><span>Union + full context</span><strong data-evidence="handle_vote">30.99</strong></div><div class="bar-track"><span class="bar forest-bar" style="--bar-length:88.5429%"></span></div></li>
+            </ol>
+            <div class="chart-axis" aria-hidden="true"><span>0</span><span>17.5</span><span>35 AP</span></div>
+          </article>
+        </div>
+        <div class="result-notes"><p><strong>Reading the results.</strong> Motion AP requires a correct mask, axis and rotational origin; handle AP evaluates instance masks and motion classes. Scores are percentages. Gains use unrounded scores, so rounded endpoints may not subtract exactly.</p><p>Part-only and full-context labels are <strong>alternative corrections of the same union</strong>. Full context includes dense-label fallback and adds <span data-evidence="handle_full_vote_delta">1.34</span> pp, not 0.98 + 1.34 pp. Proposal gains show complementarity, not an isolated causal effect of parent conditioning.</p></div>
+        <details class="evidence-details"><summary>What do the stability controls show?</summary><div><p>Appending children improves handle AP by <span data-evidence="sep8_child_seed_b_union_step">3.94</span>–<span data-evidence="sep8_child_reference_union_step">5.01</span> pp across three child-training draws. The reference proposal gain has a paired 95% scene interval of [<span data-evidence="sep20_child_union_ci_low">+1.47</span>, <span data-evidence="sep20_child_union_ci_high">+8.56</span>] pp.</p><p>Full contextual correction is positive in all three draws but varies from <span data-evidence="sep8_child_seed_a_vote_step">0.19</span> to <span data-evidence="sep8_child_reference_vote_step">1.34</span> pp. Scene intervals use fixed predictions and do not measure retraining variability. Validation also informed model selection; these are development-set comparisons.</p><a class="text-link" href="assets/paper.pdf#page=13" target="_blank" rel="noopener">Read the controls in the report <span aria-hidden="true">↗</span></a></div></details>
+
+        <aside class="challenge-banner" id="challenge" data-reveal aria-labelledby="challenge-heading">
+          <div class="challenge-title"><span class="challenge-kicker"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 3h8v4a4 4 0 0 1-8 0V3ZM6 4H3v2a3 3 0 0 0 3 3m8-5h3v2a3 3 0 0 1-3 3m-4 2v5m-3 1h6"/></svg> Final challenge result</span><h3 id="challenge-heading">First place.<br>A joint scene understanding.</h3><p>Team TnG · Articulate3D Challenge</p></div>
+          <div class="challenge-score"><strong data-evidence="final_mov">48.28</strong><span>Movable-part motion AP<sub>50</sub><sup>AO</sup></span><span class="rank-label">Rank 1</span></div>
+          <div class="challenge-score"><strong data-evidence="final_handle">34.46</strong><span>Handle AP<sub>50</sub></span><span class="rank-label">Rank 1</span></div>
+          <div class="challenge-footer"><p>Public test leaderboard accessed September 6, 2026. Test labels are withheld; the ablations above use validation.</p><a href="https://art3d-challenge.mooo.com/web/challenges/challenge-page/1/leaderboard/" target="_blank" rel="noopener">Official leaderboard <span aria-hidden="true">↗</span></a></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container" id="qualitative" aria-labelledby="qualitative-heading">
+      <div class="qualitative-heading" data-reveal>
+        <p class="section-index">See the difference</p>
+        <h2 id="qualitative-heading">What does coupling change?</h2>
+        <p>Compare hinge placement, handle recovery and motion-class correction on selected validation examples. The last tab shows the method’s limits. Light gray points are scene context; each plot includes a legend.</p>
+      </div>
+      <div class="gallery-tabs" data-gallery-tabs hidden aria-label="Qualitative example categories">
+        <button type="button" id="tab-motion" data-panel="gallery-motion">Hinge placement</button>
+        <button type="button" id="tab-handles" data-panel="gallery-handles">Handle understanding</button>
+        <button type="button" id="tab-limits" data-panel="gallery-limits">Where it fails</button>
+      </div>
+      <section class="gallery-panel" id="gallery-motion" data-gallery-panel aria-label="Hinge placement examples">
+        <div class="gallery-intro">
+          <h3>Can a handle resolve the hinge side?</h3>
+          <p>Switch between <strong>Centroid</strong> and <strong>Handle-guided</strong> to compare two origin estimates for the same predicted movable part. This isolates how the handle cue changes hinge placement while the part mask stays fixed.</p>
+        </div>
+        <div class="compare-layout">
+          <div class="comparison" data-comparison>
+            <div class="comparison-images">
+              <figure data-compare-view="before"><img src="assets/motion-before.png" width="2400" height="2329" alt="Green predicted door surface with its centroid far from the black annotated hinge; origin error is 0.42 metres." loading="lazy"><figcaption>Centroid origin · 0.42 m error</figcaption></figure>
+              <figure data-compare-view="after"><img src="assets/motion-after.png" width="2400" height="2329" alt="The same predicted door surface with a handle-guided origin close to the annotated hinge; origin error is 0.05 metres." loading="lazy"><figcaption>Handle-guided origin · 0.05 m error</figcaption></figure>
+            </div>
+            <div class="compare-controls" data-compare-controls hidden>
+              <div class="compare-control-heading"><span>Compare the origin rules.</span><span>Same predicted part.</span></div>
+              <div class="compare-endpoints" role="group" aria-label="Hinge origin comparison"><button type="button" data-compare-set="before">Centroid</button><button type="button" data-compare-set="after">Handle-guided</button></div>
+              <p class="compare-status" data-compare-status aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="comparison-story">
+            <h3>Change the origin. Keep the part.</h3>
+            <p>The baseline puts the origin at the part’s center. Our geometric decoder uses a predicted handle to choose the opposite attachment side. The plot shows the resulting origin estimate; the handle itself is not drawn.</p>
+            <p class="legend-heading">How to read the plot</p>
+            <ul class="figure-legend" id="motion-legend">
+              <li><span class="legend-mark mark-green" aria-hidden="true"></span><span><strong>Green points</strong> — predicted movable part</span></li>
+              <li><span class="legend-mark mark-line" aria-hidden="true"></span><span><strong>Black line</strong> — annotated hinge</span></li>
+              <li><span class="legend-mark mark-origin" aria-hidden="true"></span><span><strong>Colored dot</strong> — predicted origin</span></li>
+              <li><span class="legend-mark mark-error" aria-hidden="true"></span><span><strong>Colored segment</strong> — perpendicular origin error</span></li>
+            </ul>
+            <div class="comparison-values" aria-label="Perpendicular hinge-origin error: centroid 0.42 metres, handle-guided 0.05 metres"><div><strong>0.42<span>m</span></strong><span>Centroid</span></div><span class="comparison-value-arrow" aria-hidden="true">→</span><div><strong class="teal">0.05<span>m</span></strong><span>Handle-guided</span></div></div>
+            <p class="comparison-scope">Origin error in this example. Red/green and FAIL/PASS indicate whether the error is below 0.25 m; they do not evaluate the full detection.</p>
+            <div class="comparison-originals"><a href="assets/motion-before.png" data-lightbox data-caption="Centroid origin: 0.42 m perpendicular error. Green points are the predicted part, black is the annotated hinge, and the red dot/segment show the predicted origin and its error. Same part as the handle-guided result, with a separate projection frame.">View before <span aria-hidden="true">↗</span></a><a href="assets/motion-after.png" data-lightbox data-caption="Handle-guided origin: 0.05 m perpendicular error. Green points are the same predicted part, black is the annotated hinge, and the green dot/segment mark the origin and error. Only the origin rule changes; the source panels use separate projection frames.">View after <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+        <p class="gallery-note">The part mask and specimen are fixed, but the source renderer uses separate projection directions: compare the origin and error, not pixel alignment. This is the median centroid-error example among cases improved by handle guidance.</p>
+      </section>
+      <section class="gallery-panel" id="gallery-handles" data-gallery-panel aria-label="Handle understanding examples">
+        <div class="gallery-intro">
+          <h3>Can parts help us find and interpret handles?</h3>
+          <p>The two examples illustrate different benefits: an extra part-associated proposal recovers a handle location, while a containing part’s motion class corrects the meaning of an already predicted handle. They are separate examples, not a before/after pair.</p>
+        </div>
+        <div class="gallery-pair">
+          <figure>
+            <div class="gallery-image"><a href="assets/handle-recovered.png" data-lightbox data-caption="Black points are the annotated handle; translucent green points are an extra handle proposal from the joint predictor. The proposal overlaps the annotation at IoU above 0.5 where the dense source has no matching mask. This illustrates complementary localization, not a per-example AP score."><img src="assets/handle-recovered.png" width="2400" height="1846" alt="Green additional handle proposal overlapping black annotated handle points in a location missed by the dense source." loading="lazy"></a></div>
+            <figcaption>
+              <span class="example-label blue">Additional proposals</span><h3>Find a missing handle.</h3>
+              <ul class="figure-legend" id="recovery-legend"><li><span class="legend-mark mark-black" aria-hidden="true"></span><span><strong>Black</strong> — annotated handle</span></li><li><span class="legend-mark mark-green" aria-hidden="true"></span><span><strong>Green</strong> — extra predicted handle</span></li></ul>
+              <p>The joint part-handle predictor adds a candidate that overlaps the annotation at IoU &gt; 0.5. The dense source alone has no matching mask here. This illustrates why combining the two proposal sources increases coverage.</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <div class="gallery-image"><a href="assets/handle-context.png" data-lightbox data-caption="Green points are the predicted containing movable part; black points are the predicted child handle, not ground truth. Part context corrects this matched handle's class from translation to rotation without changing its mask or confidence."><img src="assets/handle-context.png" width="2400" height="1846" alt="Black predicted handle points beside a translucent green containing-part prediction; part context corrects the handle label from translation to rotation." loading="lazy"></a></div>
+            <figcaption>
+              <span class="example-label teal">Contextual labels</span><h3>Correct what the handle controls.</h3>
+              <ul class="figure-legend" id="context-legend"><li><span class="legend-mark mark-black" aria-hidden="true"></span><span><strong>Black</strong> — predicted handle from the joint branch</span></li><li><span class="legend-mark mark-green" aria-hidden="true"></span><span><strong>Green</strong> — predicted containing part</span></li></ul>
+              <p>The part’s rotation class changes this handle’s label from <strong>translation to rotation</strong>. The black handle points and their confidence stay unchanged: this is a semantic correction, not a better mask.</p>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="gallery-note">The two panels use different legends: black is the annotation in the recovery example, but the prediction in the context example. These selected localization and relabeling cases are not per-example AP measurements.</p>
+      </section>
+      <section class="gallery-panel" id="gallery-limits" data-gallery-panel aria-label="Failure examples">
+        <div class="gallery-intro">
+          <h3>What can these connections not repair?</h3>
+          <p>Handle guidance still depends on the motion decoder’s geometric assumptions. Part-based label correction changes a handle’s class, not its shape. These examples separate those two limits.</p>
+        </div>
+        <div class="gallery-pair">
+          <figure>
+            <div class="gallery-image"><a href="assets/failure-axis.png" data-lightbox data-caption="Green points are the predicted part; the black line is the annotated hinge. The red dot/segment show an origin error of 0.85 m. This nonvertical mechanism violates the upright-axis assumption, which handle guidance does not repair."><img src="assets/failure-axis.png" width="2400" height="2329" alt="Green predicted part with a nonvertical black annotated hinge and a red predicted origin whose perpendicular error is 0.85 metres." loading="lazy"></a></div>
+            <figcaption>
+              <span class="example-label orange">Geometric assumption</span><h3>Not every hinge is upright.</h3>
+              <ul class="figure-legend" id="axis-legend"><li><span class="legend-mark mark-green" aria-hidden="true"></span><span><strong>Green</strong> — predicted movable part</span></li><li><span class="legend-mark mark-line" aria-hidden="true"></span><span><strong>Black line</strong> — annotated hinge</span></li><li><span class="legend-mark mark-error" aria-hidden="true"></span><span><strong>Red dot and segment</strong> — origin and error</span></li></ul>
+              <p>This nonvertical hinge falls outside the decoder’s upright-axis assumption. The handle-guided origin still has 0.85 m error. A useful handle cue cannot correct the wrong axis model.</p>
+            </figcaption>
+          </figure>
+          <figure>
+            <div class="gallery-image"><a href="assets/failure-handle.png" data-lightbox data-caption="Black points are the annotated handle; translucent red points are an overextended dense prediction. This is a mask-extent error. Contextual relabeling does not modify dense detections and cannot repair their geometry."><img src="assets/failure-handle.png" width="2400" height="1846" alt="Translucent red dense-handle prediction extending beyond black annotated handle points." loading="lazy"></a></div>
+            <figcaption>
+              <span class="example-label orange">Perception limit</span><h3>A correct class cannot fix a mask.</h3>
+              <ul class="figure-legend" id="extent-legend"><li><span class="legend-mark mark-black" aria-hidden="true"></span><span><strong>Black</strong> — annotated handle</span></li><li><span class="legend-mark mark-red" aria-hidden="true"></span><span><strong>Red</strong> — overextended dense prediction</span></li></ul>
+              <p>The predicted handle covers too much of the surrounding surface. Relabeling cannot remove those extra points, and our contextual correction leaves dense detections untouched.</p>
+            </figcaption>
+          </figure>
+        </div>
+        <p class="gallery-note">The model assumes approximately planar supports and upright rotational axes. The report includes the full failure census and additional paired examples.</p>
+      </section>
+      <p class="gallery-scope">These are selected validation examples explaining behavior, not estimates of how frequently each outcome occurs. Aggregate performance is reported in the quantitative results above.</p>
+    </section>
+
+    <section class="citation-section" id="citation" aria-labelledby="citation-heading">
+      <div class="container">
+      <div class="resources-heading" data-reveal><p class="section-index">Research resources</p><h2 id="citation-heading">Take a closer look.</h2><p>The paper, code, and model checkpoints.</p></div>
+      <div class="resource-links">
+        <a data-resource="paper" href="assets/paper.pdf" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/paper.svg" width="28" height="28" alt="" aria-hidden="true"><span><strong>Read the paper</strong><span>Method, experiments, and discussion</span></span><span aria-hidden="true">↗</span></a>
+        <a data-resource="code" href="https://github.com/HyoKong/Segment-Snap" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/code.svg" width="28" height="28" alt="" aria-hidden="true"><span><strong>Code repository</strong><span>Segment-Snap on GitHub</span></span><span aria-hidden="true">↗</span></a>
+        <a data-resource="huggingface" href="https://huggingface.co/imsuperkong/Segment-Snap" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/huggingface.svg" width="28" height="28" alt="" aria-hidden="true"><span><strong>Model checkpoints</strong><span>Segment-Snap on Hugging Face</span></span><span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="citation-grid"><div><h3>Cite this work.</h3><p>If this work is useful to your research, please cite the technical report.</p></div>
+        <div class="citation-block"><div class="citation-header"><span>BibTeX · technical report</span><button type="button" class="copy-button" data-copy-citation hidden>Copy citation</button></div><pre><code id="bibtex">@techreport{kong2026segmentsnap,
+  title  = {Geometric and Semantic Coupling for
+            Interaction Understanding in 3D Scenes},
+  author = {Kong, Hanyang and Yang, Xingyi},
+  year   = {2026},
+  institution = {National University of Singapore
+                 and The Hong Kong Polytechnic University},
+  url    = {https://hyokong.github.io/segment-snap-page/}
+}</code></pre><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p></div>
+      </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container"><div><a class="footer-wordmark" href="#overview">Segment–Snap</a><p>Hanyang Kong &amp; Xingyi Yang · 2026</p></div><div class="footer-links"><a href="https://insait-institute.github.io/articulate3d.github.io/" target="_blank" rel="noopener">Dataset <span aria-hidden="true">↗</span></a><a href="mailto:hanyang.k@u.nus.edu">Contact</a></div></footer>
+
+  <dialog class="image-dialog" id="image-dialog" aria-label="Expanded research figure"><div class="dialog-toolbar"><span>Figure detail</span><button type="button" class="dialog-close" aria-label="Close expanded figure" autofocus>Close <span aria-hidden="true">×</span></button></div><div class="dialog-image-wrap"><img id="dialog-image" alt=""></div><p id="dialog-caption"></p><a id="dialog-original" target="_blank" rel="noopener">Open original image <span aria-hidden="true">↗</span></a></dialog>
+</body>
+</html>

@@ -1,0 +1,750 @@
+{
+  "schema_version": 2,
+  "generated_by": "website/scripts/prepare_assets.py",
+  "scientific_visualization_policy": "No synthetic prediction imagery or bitmap upscaling. Illustrations and selected prediction panels are re-rendered from their original plotting data; geometry, specimen choices, labels and numerical claims are preserved.",
+  "interpretation": {
+    "teaser_and_pipeline": "Illustrative report artwork explaining the method; not a gallery of model predictions.",
+    "qualitative_panels": "Selected validation predictions from verified source galleries; individual examples are illustrative rather than AP estimates.",
+    "matching": "Gallery labels describe the producer's visualization matching. They are not a replacement for the evaluation's IoU/AP matching protocol.",
+    "counts": "Producer footer counts and source-gallery population totals are intentionally omitted from website panels and must not be used as AP evidence."
+  },
+  "assets": {
+    "teaser.svg": {
+      "kind": "source_native_svg_export",
+      "source": "report/figures/teaser_rgb.pdf",
+      "source_sha256": "104f9f6694f7b14eed5f97bed24eb3e980a0cd2ed357e695806b63f8ef582dd5",
+      "output": "website/assets/teaser.svg",
+      "output_sha256": "f92aeb66b24a895aef968fd4c5457791f2ab858b4bdefb247fe2aa4639cb896d",
+      "view_box": [
+        0.0,
+        0.0,
+        590.4,
+        208.8
+      ],
+      "figure_size_inches": [
+        8.2,
+        2.9
+      ],
+      "vector_text_and_annotations": true,
+      "raster_dpi": 900,
+      "embedded_point_layers": 4,
+      "inputs": [
+        {
+          "source": "report/scripts/render_pipeline.py",
+          "source_sha256": "328ea67857a181de43ac77da35046128469c46334b26001040ad8223694c8eaa"
+        },
+        {
+          "source": "report/scripts/coupling_evidence.py",
+          "source_sha256": "735e84ae2db76e4c4911ae74e8b47ff3066eec45340f2afa8f93d2b00b24d9d0"
+        },
+        {
+          "source": "report/scripts/check_evidence.py",
+          "source_sha256": "3ddf4659eda16e398408742699d87f3296b2250b71319fcd919898a5cbc7bc31"
+        },
+        {
+          "source": "report/data/current_results.csv",
+          "source_sha256": "3cbce39171397e3136a52ab40484997f931f25dd2401918345bd04fde9c74f06"
+        },
+        {
+          "source": "report/data/new_results_20260907.csv",
+          "source_sha256": "96230e4d3299954629772044c251c3f8ee3fb2e32caa504d6975e69f37d75184"
+        },
+        {
+          "source": "report/data/new_results_20260908.csv",
+          "source_sha256": "3543c83e13ae773a53f43157bb0d7359bf63c099dba871785cd78f1637c57c92"
+        },
+        {
+          "source": "report/data/new_results_20260908_analysis.csv",
+          "source_sha256": "5de2d6e0d81824d19e442914568a7a1caaee22aa55ee8414a7c451fec77ef7a8"
+        },
+        {
+          "source": "report/data/new_results_20260909.csv",
+          "source_sha256": "da03d4364478e915ac13209949dc14051915a8c7e7cfdfabcf73b7ca27d1e77b"
+        },
+        {
+          "source": "report/data/new_results_20260909_dense.csv",
+          "source_sha256": "57210cd772e638bef786a1b7509fc24dd7bb5e50c71f174db59be6320561e779"
+        },
+        {
+          "source": "report/data/new_results_20260909_main.csv",
+          "source_sha256": "0513cb5795d5b393cd07b34ff380254cbf509a2b5f20f33a077d0496a14dbdad"
+        },
+        {
+          "source": "report/data/new_results_20260920.csv",
+          "source_sha256": "c9513ea1af0e428cb8208a7468af50c278a171df93b074b45e81d38e35146a01"
+        },
+        {
+          "source": "data/a3d/processed/articulate3d_challenge_mov/validation/1366d5ae89.npy",
+          "source_sha256": "67eb3ce9176a83aa9d2ecb99f0c350aa686c851499af66e4b9eef08609c2dce2"
+        },
+        {
+          "source": "data/a3d/processed/articulate3d_challenge_mov/instance_gt/validation/1366d5ae89.txt",
+          "source_sha256": "0048b6e21f038659cb1faac2ff8e9a62039f0a3911a5ac9206dbb21aaa309f54"
+        },
+        {
+          "source": "report/scripts/render_teaser.py",
+          "source_sha256": "549948c872b5126b7c759514dda282a01a5f5170fa1ad88f356a3d920ef52d66"
+        },
+        {
+          "source": "report/data/teaser_illustration.json",
+          "source_sha256": "6440206bcd9308ef6fda94bdc03092484c75ce906387295f1b2eaddcf46c406b"
+        }
+      ],
+      "exporter": {
+        "source": "website/scripts/render_illustrations.py",
+        "source_sha256": "64b8e8870e7e9fd78282af3303d9d79dcbc06ee12696a20f6ba064a1a72f6001"
+      },
+      "preservation": "The original figure function and measured RGB points are reused. Only the export format and native scatter rendering density change; geometry, labels, layout and reported gains are unchanged."
+    },
+    "pipeline.svg": {
+      "kind": "source_native_svg_export",
+      "source": "report/figures/pipeline_rgb.pdf",
+      "source_sha256": "e5832945ea68246c136ee5f2a51f0396c6b859de4a591d25683e5f7e833e5991",
+      "output": "website/assets/pipeline.svg",
+      "output_sha256": "992dab9d02293a39dd98774e9fb518972a25d9786c5e093fd6ab1bf18f358cf3",
+      "view_box": [
+        0.0,
+        0.0,
+        604.8,
+        259.2
+      ],
+      "figure_size_inches": [
+        8.4,
+        3.6
+      ],
+      "vector_text_and_annotations": true,
+      "raster_dpi": 900,
+      "embedded_point_layers": 11,
+      "inputs": [
+        {
+          "source": "report/scripts/render_pipeline.py",
+          "source_sha256": "328ea67857a181de43ac77da35046128469c46334b26001040ad8223694c8eaa"
+        },
+        {
+          "source": "report/scripts/coupling_evidence.py",
+          "source_sha256": "735e84ae2db76e4c4911ae74e8b47ff3066eec45340f2afa8f93d2b00b24d9d0"
+        },
+        {
+          "source": "report/scripts/check_evidence.py",
+          "source_sha256": "3ddf4659eda16e398408742699d87f3296b2250b71319fcd919898a5cbc7bc31"
+        },
+        {
+          "source": "report/data/current_results.csv",
+          "source_sha256": "3cbce39171397e3136a52ab40484997f931f25dd2401918345bd04fde9c74f06"
+        },
+        {
+          "source": "report/data/new_results_20260907.csv",
+          "source_sha256": "96230e4d3299954629772044c251c3f8ee3fb2e32caa504d6975e69f37d75184"
+        },
+        {
+          "source": "report/data/new_results_20260908.csv",
+          "source_sha256": "3543c83e13ae773a53f43157bb0d7359bf63c099dba871785cd78f1637c57c92"
+        },
+        {
+          "source": "report/data/new_results_20260908_analysis.csv",
+          "source_sha256": "5de2d6e0d81824d19e442914568a7a1caaee22aa55ee8414a7c451fec77ef7a8"
+        },
+        {
+          "source": "report/data/new_results_20260909.csv",
+          "source_sha256": "da03d4364478e915ac13209949dc14051915a8c7e7cfdfabcf73b7ca27d1e77b"
+        },
+        {
+          "source": "report/data/new_results_20260909_dense.csv",
+          "source_sha256": "57210cd772e638bef786a1b7509fc24dd7bb5e50c71f174db59be6320561e779"
+        },
+        {
+          "source": "report/data/new_results_20260909_main.csv",
+          "source_sha256": "0513cb5795d5b393cd07b34ff380254cbf509a2b5f20f33a077d0496a14dbdad"
+        },
+        {
+          "source": "report/data/new_results_20260920.csv",
+          "source_sha256": "c9513ea1af0e428cb8208a7468af50c278a171df93b074b45e81d38e35146a01"
+        },
+        {
+          "source": "data/a3d/processed/articulate3d_challenge_mov/validation/1366d5ae89.npy",
+          "source_sha256": "67eb3ce9176a83aa9d2ecb99f0c350aa686c851499af66e4b9eef08609c2dce2"
+        },
+        {
+          "source": "data/a3d/processed/articulate3d_challenge_mov/instance_gt/validation/1366d5ae89.txt",
+          "source_sha256": "0048b6e21f038659cb1faac2ff8e9a62039f0a3911a5ac9206dbb21aaa309f54"
+        },
+        {
+          "source": "report/data/pipeline_illustration.json",
+          "source_sha256": "3e0c324d01f41793431a9fe23acd2a6626fcfac18389d6222e586dcdccc6f831"
+        },
+        {
+          "source": "report/data/pipeline_cross_task_example.npz",
+          "source_sha256": "ebd2609561b312d13cd4ee60cab1c42589c7506fe169e78b5cc0284e8e3c1dfa"
+        },
+        {
+          "source": "report/data/pipeline_handle_motion_example.npz",
+          "source_sha256": "374f287e260d54993e88ff24f469bacd55ce97a5570641a44904f701792932c6"
+        }
+      ],
+      "exporter": {
+        "source": "website/scripts/render_illustrations.py",
+        "source_sha256": "64b8e8870e7e9fd78282af3303d9d79dcbc06ee12696a20f6ba064a1a72f6001"
+      },
+      "preservation": "The original figure function and measured RGB points are reused. Only the export format and native scatter rendering density change; geometry, labels, layout and reported gains are unchanged."
+    },
+    "motion-before.png": {
+      "kind": "source_native_prediction_render",
+      "source": "report/figures/qualitative_hinge_source.pdf",
+      "source_sha256": "da3cb7b1c14ea1512bdc614c2a02f46ffea212b4f6a330f1c2afd681a798474d",
+      "output": "website/assets/motion-before.png",
+      "output_sha256": "a74010991a64bb90c845d65d18029117cf80cfd8d6c3e7328c4643f700c68ebf",
+      "pixels": [
+        2400,
+        2329
+      ],
+      "preservation": "Exact verified PDF-space panel rectangle; native Matplotlib redraw from released predictions. No bitmap upscaling, image editing, inference, camera alignment, or specimen substitution.",
+      "crop_bounds_pdf_points": {
+        "x": 6.7,
+        "y": 74.0,
+        "width": 155.1,
+        "height": 150.5
+      },
+      "exporter": {
+        "source": "website/scripts/render_qualitative.py",
+        "source_sha256": "f50b46c70f866ef5f9536227c0b6e195cd3acc9fb07512e82a9fc1ad3139fb10"
+      },
+      "renderer": {
+        "name": "matplotlib_pdf_then_poppler_rectangle",
+        "native_scatter_dpi": 1400,
+        "page_render_width_px": 16576,
+        "target_min_width_px": 2400
+      },
+      "inputs": [
+        {
+          "source": "experiments/fig_hinge_gallery.py",
+          "source_sha256": "5ed32ad69d3cafa35a73463c030001ac707f8409581eb61acba143bcc9ff27ce"
+        },
+        {
+          "source": "runs/a1_cache/specimens.json",
+          "source_sha256": "e98350270c5541635853ac11166d84979b4e7167d17d84e91c3f123c7ef00d76"
+        },
+        {
+          "source": "runs/release_repro/t1_validation_preds.pkl",
+          "source_sha256": "4c57ffebc5e4ce2dee98cb46be74b66f43774727e978b9d654f30c6a665fcbe0"
+        },
+        {
+          "source": "data/pointcept_mov/validation/38d58a7a31/coord.npy",
+          "source_sha256": "3115bbc7e74a43031e9efb6c139d35b6525950f14fb372f32e3b16f5685f6648"
+        },
+        {
+          "source": "data/pointcept_mov/validation/61adeff7d5/coord.npy",
+          "source_sha256": "acc8ea793715f73a8ec486db773d0a85ba92554c4b6afa9148199e30f562bfeb"
+        },
+        {
+          "source": "data/pointcept_mov/validation/88627b561e/coord.npy",
+          "source_sha256": "f2ea7e58ea1ac8d83dd2cc78d0df9804190321f3d50dafb651f0e0ed9957ffa7"
+        },
+        {
+          "source": "data/pointcept_mov/validation/8890d0a267/coord.npy",
+          "source_sha256": "50941bc0a30962815c21884dba025cb128c81369d130cad4f2052a33df75aabd"
+        },
+        {
+          "source": "data/pointcept_mov/validation/bcd2436daf/coord.npy",
+          "source_sha256": "d98981e4166a10b22e8569bef3e775f17d7d4ddc417f4d4b550caec5318bcc4f"
+        },
+        {
+          "source": "data/pointcept_mov/validation/e91722b5a3/coord.npy",
+          "source_sha256": "ffc57f567070aaaba7d4d1adcef53a74a122fc574833354af48b0d5a52650b15"
+        }
+      ],
+      "plot_provenance": {
+        "producer": "experiments/fig_hinge_gallery.py",
+        "selection": "runs/a1_cache/specimens.json",
+        "source_gallery": "report/figures/qualitative_hinge_source.pdf",
+        "camera_caveat": "The paired projection frames are producer-defined; they are not re-aligned by this exporter."
+      },
+      "reproduction": {
+        "reference": "report/figures/qualitative_hinge_source.png",
+        "reference_sha256": "4804f24ec944a20fe9c51beeaed07eefd138631186c39bff7b448efc33844678",
+        "rendered_producer_png": "hinge.png",
+        "pixels": [
+          2828,
+          1095
+        ],
+        "mean_absolute_rgb_difference": 0.0,
+        "max_rgb_difference": 0,
+        "selection_confirmed": true,
+        "gate": "exact whole-gallery RGB equality at the original 190 DPI"
+      },
+      "runtime_seconds": 143.07
+    },
+    "motion-after.png": {
+      "kind": "source_native_prediction_render",
+      "source": "report/figures/qualitative_hinge_source.pdf",
+      "source_sha256": "da3cb7b1c14ea1512bdc614c2a02f46ffea212b4f6a330f1c2afd681a798474d",
+      "output": "website/assets/motion-after.png",
+      "output_sha256": "c527c491d5e9b768309afd300ddf6a3d22e1696420ea8eec365fffa4d7effae8",
+      "pixels": [
+        2400,
+        2329
+      ],
+      "preservation": "Exact verified PDF-space panel rectangle; native Matplotlib redraw from released predictions. No bitmap upscaling, image editing, inference, camera alignment, or specimen substitution.",
+      "crop_bounds_pdf_points": {
+        "x": 6.7,
+        "y": 224.5,
+        "width": 155.1,
+        "height": 150.5
+      },
+      "exporter": {
+        "source": "website/scripts/render_qualitative.py",
+        "source_sha256": "f50b46c70f866ef5f9536227c0b6e195cd3acc9fb07512e82a9fc1ad3139fb10"
+      },
+      "renderer": {
+        "name": "matplotlib_pdf_then_poppler_rectangle",
+        "native_scatter_dpi": 1400,
+        "page_render_width_px": 16576,
+        "target_min_width_px": 2400
+      },
+      "inputs": [
+        {
+          "source": "experiments/fig_hinge_gallery.py",
+          "source_sha256": "5ed32ad69d3cafa35a73463c030001ac707f8409581eb61acba143bcc9ff27ce"
+        },
+        {
+          "source": "runs/a1_cache/specimens.json",
+          "source_sha256": "e98350270c5541635853ac11166d84979b4e7167d17d84e91c3f123c7ef00d76"
+        },
+        {
+          "source": "runs/release_repro/t1_validation_preds.pkl",
+          "source_sha256": "4c57ffebc5e4ce2dee98cb46be74b66f43774727e978b9d654f30c6a665fcbe0"
+        },
+        {
+          "source": "data/pointcept_mov/validation/38d58a7a31/coord.npy",
+          "source_sha256": "3115bbc7e74a43031e9efb6c139d35b6525950f14fb372f32e3b16f5685f6648"
+        },
+        {
+          "source": "data/pointcept_mov/validation/61adeff7d5/coord.npy",
+          "source_sha256": "acc8ea793715f73a8ec486db773d0a85ba92554c4b6afa9148199e30f562bfeb"
+        },
+        {
+          "source": "data/pointcept_mov/validation/88627b561e/coord.npy",
+          "source_sha256": "f2ea7e58ea1ac8d83dd2cc78d0df9804190321f3d50dafb651f0e0ed9957ffa7"
+        },
+        {
+          "source": "data/pointcept_mov/validation/8890d0a267/coord.npy",
+          "source_sha256": "50941bc0a30962815c21884dba025cb128c81369d130cad4f2052a33df75aabd"
+        },
+        {
+          "source": "data/pointcept_mov/validation/bcd2436daf/coord.npy",
+          "source_sha256": "d98981e4166a10b22e8569bef3e775f17d7d4ddc417f4d4b550caec5318bcc4f"
+        },
+        {
+          "source": "data/pointcept_mov/validation/e91722b5a3/coord.npy",
+          "source_sha256": "ffc57f567070aaaba7d4d1adcef53a74a122fc574833354af48b0d5a52650b15"
+        }
+      ],
+      "plot_provenance": {
+        "producer": "experiments/fig_hinge_gallery.py",
+        "selection": "runs/a1_cache/specimens.json",
+        "source_gallery": "report/figures/qualitative_hinge_source.pdf",
+        "camera_caveat": "The paired projection frames are producer-defined; they are not re-aligned by this exporter."
+      },
+      "reproduction": {
+        "reference": "report/figures/qualitative_hinge_source.png",
+        "reference_sha256": "4804f24ec944a20fe9c51beeaed07eefd138631186c39bff7b448efc33844678",
+        "rendered_producer_png": "hinge.png",
+        "pixels": [
+          2828,
+          1095
+        ],
+        "mean_absolute_rgb_difference": 0.0,
+        "max_rgb_difference": 0,
+        "selection_confirmed": true,
+        "gate": "exact whole-gallery RGB equality at the original 190 DPI"
+      },
+      "runtime_seconds": 143.07
+    },
+    "failure-axis.png": {
+      "kind": "source_native_prediction_render",
+      "source": "report/figures/qualitative_hinge_source.pdf",
+      "source_sha256": "da3cb7b1c14ea1512bdc614c2a02f46ffea212b4f6a330f1c2afd681a798474d",
+      "output": "website/assets/failure-axis.png",
+      "output_sha256": "2231c1acec72657209ec4d0521716e289852a1dbf0eb06a64285f4683cfc667a",
+      "pixels": [
+        2400,
+        2329
+      ],
+      "preservation": "Exact verified PDF-space panel rectangle; native Matplotlib redraw from released predictions. No bitmap upscaling, image editing, inference, camera alignment, or specimen substitution.",
+      "crop_bounds_pdf_points": {
+        "x": 502.7,
+        "y": 224.5,
+        "width": 155.1,
+        "height": 150.5
+      },
+      "exporter": {
+        "source": "website/scripts/render_qualitative.py",
+        "source_sha256": "f50b46c70f866ef5f9536227c0b6e195cd3acc9fb07512e82a9fc1ad3139fb10"
+      },
+      "renderer": {
+        "name": "matplotlib_pdf_then_poppler_rectangle",
+        "native_scatter_dpi": 1400,
+        "page_render_width_px": 16576,
+        "target_min_width_px": 2400
+      },
+      "inputs": [
+        {
+          "source": "experiments/fig_hinge_gallery.py",
+          "source_sha256": "5ed32ad69d3cafa35a73463c030001ac707f8409581eb61acba143bcc9ff27ce"
+        },
+        {
+          "source": "runs/a1_cache/specimens.json",
+          "source_sha256": "e98350270c5541635853ac11166d84979b4e7167d17d84e91c3f123c7ef00d76"
+        },
+        {
+          "source": "runs/release_repro/t1_validation_preds.pkl",
+          "source_sha256": "4c57ffebc5e4ce2dee98cb46be74b66f43774727e978b9d654f30c6a665fcbe0"
+        },
+        {
+          "source": "data/pointcept_mov/validation/38d58a7a31/coord.npy",
+          "source_sha256": "3115bbc7e74a43031e9efb6c139d35b6525950f14fb372f32e3b16f5685f6648"
+        },
+        {
+          "source": "data/pointcept_mov/validation/61adeff7d5/coord.npy",
+          "source_sha256": "acc8ea793715f73a8ec486db773d0a85ba92554c4b6afa9148199e30f562bfeb"
+        },
+        {
+          "source": "data/pointcept_mov/validation/88627b561e/coord.npy",
+          "source_sha256": "f2ea7e58ea1ac8d83dd2cc78d0df9804190321f3d50dafb651f0e0ed9957ffa7"
+        },
+        {
+          "source": "data/pointcept_mov/validation/8890d0a267/coord.npy",
+          "source_sha256": "50941bc0a30962815c21884dba025cb128c81369d130cad4f2052a33df75aabd"
+        },
+        {
+          "source": "data/pointcept_mov/validation/bcd2436daf/coord.npy",
+          "source_sha256": "d98981e4166a10b22e8569bef3e775f17d7d4ddc417f4d4b550caec5318bcc4f"
+        },
+        {
+          "source": "data/pointcept_mov/validation/e91722b5a3/coord.npy",
+          "source_sha256": "ffc57f567070aaaba7d4d1adcef53a74a122fc574833354af48b0d5a52650b15"
+        }
+      ],
+      "plot_provenance": {
+        "producer": "experiments/fig_hinge_gallery.py",
+        "selection": "runs/a1_cache/specimens.json",
+        "source_gallery": "report/figures/qualitative_hinge_source.pdf",
+        "camera_caveat": "The paired projection frames are producer-defined; they are not re-aligned by this exporter."
+      },
+      "reproduction": {
+        "reference": "report/figures/qualitative_hinge_source.png",
+        "reference_sha256": "4804f24ec944a20fe9c51beeaed07eefd138631186c39bff7b448efc33844678",
+        "rendered_producer_png": "hinge.png",
+        "pixels": [
+          2828,
+          1095
+        ],
+        "mean_absolute_rgb_difference": 0.0,
+        "max_rgb_difference": 0,
+        "selection_confirmed": true,
+        "gate": "exact whole-gallery RGB equality at the original 190 DPI"
+      },
+      "runtime_seconds": 143.07
+    },
+    "handle-recovered.png": {
+      "kind": "source_native_prediction_render",
+      "source": "report/figures/qualitative_handles_source.pdf",
+      "source_sha256": "318282fde391ea6f19d1423265fe022eea891a776289a63f3c8e4f9a1f72d19a",
+      "output": "website/assets/handle-recovered.png",
+      "output_sha256": "b2777f2dc0bb9811c15965927ece44d09565be92450e66c36bbfc721ebf13fbd",
+      "pixels": [
+        2400,
+        1846
+      ],
+      "preservation": "Exact verified PDF-space panel rectangle; native Matplotlib redraw from released predictions. No bitmap upscaling, image editing, inference, camera alignment, or specimen substitution.",
+      "crop_bounds_pdf_points": {
+        "x": 394.9,
+        "y": 73.1,
+        "width": 131.2,
+        "height": 100.9
+      },
+      "exporter": {
+        "source": "website/scripts/render_qualitative.py",
+        "source_sha256": "f50b46c70f866ef5f9536227c0b6e195cd3acc9fb07512e82a9fc1ad3139fb10"
+      },
+      "renderer": {
+        "name": "matplotlib_pdf_then_poppler_rectangle",
+        "native_scatter_dpi": 1400,
+        "page_render_width_px": 21946,
+        "target_min_width_px": 2400
+      },
+      "inputs": [
+        {
+          "source": "experiments/fig_complementarity.py",
+          "source_sha256": "03295299b5c30a2c0e1a7691874fa1bd425e1b7a4390a4daefe19011657030ef"
+        },
+        {
+          "source": "experiments/t2_union_compact.py",
+          "source_sha256": "d56b2520dcdcd042372428b2f780264360a74fc93ef87cfe2ddc97cbc5a876f6"
+        },
+        {
+          "source": "runs/a1_cache/seedrow_released/single/t2_validation_preds.pkl",
+          "source_sha256": "d687d5edef18ab03c4f004ad3dd11a26575535a7aa00556fcc356235f434a801"
+        },
+        {
+          "source": "runs/a1_cache/t2_union_preds_compact.npz",
+          "source_sha256": "3851746682d3c50d79340d8bdfbfc0f249d0530dd03de2dc06a8936cc33daeac"
+        },
+        {
+          "source": "runs/release_repro/t1_validation_preds.pkl",
+          "source_sha256": "4c57ffebc5e4ce2dee98cb46be74b66f43774727e978b9d654f30c6a665fcbe0"
+        },
+        {
+          "source": "data/pointcept_lite/validation/1ae9e5d2a6/coord.npy",
+          "source_sha256": "d9fbf77e5372d93c3dcfe8dca2db870ccbb4796dac3a47447652d438edf60b3a"
+        },
+        {
+          "source": "data/pointcept_lite/validation/2e74812d00/coord.npy",
+          "source_sha256": "714d366b73a38a88120407f789068f30e03e38f45f50d333a9eaabd812e2a4e1"
+        },
+        {
+          "source": "data/pointcept_lite/validation/5654092cc2/coord.npy",
+          "source_sha256": "435e301ae4fa779c3b21f2eb2e5179422fb74356e9e0693f7eb5100aadbf2c13"
+        },
+        {
+          "source": "data/pointcept_lite/validation/5eb31827b7/coord.npy",
+          "source_sha256": "a5658093ad4f9a5f9ab6fa67a3b55bd3f863357572e15d609cef320e273c687b"
+        },
+        {
+          "source": "data/pointcept_lite/validation/8a20d62ac0/coord.npy",
+          "source_sha256": "9df67c3957032f30811ce25ee1742dfca72d81778e99d23c8c7e327726065564"
+        },
+        {
+          "source": "data/pointcept_lite/validation/bcd2436daf/coord.npy",
+          "source_sha256": "d98981e4166a10b22e8569bef3e775f17d7d4ddc417f4d4b550caec5318bcc4f"
+        },
+        {
+          "source": "data/pointcept_lite/validation/f8062cb7ce/coord.npy",
+          "source_sha256": "aa86e5820762a8b7297d23096a0e6e008ba1e764cc9eda613e8046cb00ac77d0"
+        }
+      ],
+      "plot_provenance": {
+        "producer": "experiments/fig_complementarity.py",
+        "selection": "producer-defined deterministic named quantiles",
+        "source_gallery": "report/figures/qualitative_handles_source.pdf",
+        "union_decode": "experiments/t2_union_compact.py unpacked losslessly into a temporary pickle for the unchanged producer."
+      },
+      "reproduction": {
+        "reference": "report/figures/qualitative_handles_source.png",
+        "reference_sha256": "8c9be4534f8a1b13503f8bf62d1213ad209fcfb3723154285feb79e269350649",
+        "rendered_producer_png": "handles.png",
+        "pixels": [
+          3061,
+          690
+        ],
+        "mean_absolute_rgb_difference": 0.0,
+        "max_rgb_difference": 0,
+        "selection_confirmed": true,
+        "gate": "exact whole-gallery RGB equality at the original 190 DPI"
+      },
+      "runtime_seconds": 143.07
+    },
+    "failure-handle.png": {
+      "kind": "source_native_prediction_render",
+      "source": "report/figures/qualitative_handles_source.pdf",
+      "source_sha256": "318282fde391ea6f19d1423265fe022eea891a776289a63f3c8e4f9a1f72d19a",
+      "output": "website/assets/failure-handle.png",
+      "output_sha256": "5fb4d57545a492b72f3213c47a91eddc7f20d564a4f0571cc5699a09b9ec2061",
+      "pixels": [
+        2400,
+        1846
+      ],
+      "preservation": "Exact verified PDF-space panel rectangle; native Matplotlib redraw from released predictions. No bitmap upscaling, image editing, inference, camera alignment, or specimen substitution.",
+      "crop_bounds_pdf_points": {
+        "x": 673.4,
+        "y": 73.1,
+        "width": 131.2,
+        "height": 100.9
+      },
+      "exporter": {
+        "source": "website/scripts/render_qualitative.py",
+        "source_sha256": "f50b46c70f866ef5f9536227c0b6e195cd3acc9fb07512e82a9fc1ad3139fb10"
+      },
+      "renderer": {
+        "name": "matplotlib_pdf_then_poppler_rectangle",
+        "native_scatter_dpi": 1400,
+        "page_render_width_px": 21946,
+        "target_min_width_px": 2400
+      },
+      "inputs": [
+        {
+          "source": "experiments/fig_complementarity.py",
+          "source_sha256": "03295299b5c30a2c0e1a7691874fa1bd425e1b7a4390a4daefe19011657030ef"
+        },
+        {
+          "source": "experiments/t2_union_compact.py",
+          "source_sha256": "d56b2520dcdcd042372428b2f780264360a74fc93ef87cfe2ddc97cbc5a876f6"
+        },
+        {
+          "source": "runs/a1_cache/seedrow_released/single/t2_validation_preds.pkl",
+          "source_sha256": "d687d5edef18ab03c4f004ad3dd11a26575535a7aa00556fcc356235f434a801"
+        },
+        {
+          "source": "runs/a1_cache/t2_union_preds_compact.npz",
+          "source_sha256": "3851746682d3c50d79340d8bdfbfc0f249d0530dd03de2dc06a8936cc33daeac"
+        },
+        {
+          "source": "runs/release_repro/t1_validation_preds.pkl",
+          "source_sha256": "4c57ffebc5e4ce2dee98cb46be74b66f43774727e978b9d654f30c6a665fcbe0"
+        },
+        {
+          "source": "data/pointcept_lite/validation/1ae9e5d2a6/coord.npy",
+          "source_sha256": "d9fbf77e5372d93c3dcfe8dca2db870ccbb4796dac3a47447652d438edf60b3a"
+        },
+        {
+          "source": "data/pointcept_lite/validation/2e74812d00/coord.npy",
+          "source_sha256": "714d366b73a38a88120407f789068f30e03e38f45f50d333a9eaabd812e2a4e1"
+        },
+        {
+          "source": "data/pointcept_lite/validation/5654092cc2/coord.npy",
+          "source_sha256": "435e301ae4fa779c3b21f2eb2e5179422fb74356e9e0693f7eb5100aadbf2c13"
+        },
+        {
+          "source": "data/pointcept_lite/validation/5eb31827b7/coord.npy",
+          "source_sha256": "a5658093ad4f9a5f9ab6fa67a3b55bd3f863357572e15d609cef320e273c687b"
+        },
+        {
+          "source": "data/pointcept_lite/validation/8a20d62ac0/coord.npy",
+          "source_sha256": "9df67c3957032f30811ce25ee1742dfca72d81778e99d23c8c7e327726065564"
+        },
+        {
+          "source": "data/pointcept_lite/validation/bcd2436daf/coord.npy",
+          "source_sha256": "d98981e4166a10b22e8569bef3e775f17d7d4ddc417f4d4b550caec5318bcc4f"
+        },
+        {
+          "source": "data/pointcept_lite/validation/f8062cb7ce/coord.npy",
+          "source_sha256": "aa86e5820762a8b7297d23096a0e6e008ba1e764cc9eda613e8046cb00ac77d0"
+        }
+      ],
+      "plot_provenance": {
+        "producer": "experiments/fig_complementarity.py",
+        "selection": "producer-defined deterministic named quantiles",
+        "source_gallery": "report/figures/qualitative_handles_source.pdf",
+        "union_decode": "experiments/t2_union_compact.py unpacked losslessly into a temporary pickle for the unchanged producer."
+      },
+      "reproduction": {
+        "reference": "report/figures/qualitative_handles_source.png",
+        "reference_sha256": "8c9be4534f8a1b13503f8bf62d1213ad209fcfb3723154285feb79e269350649",
+        "rendered_producer_png": "handles.png",
+        "pixels": [
+          3061,
+          690
+        ],
+        "mean_absolute_rgb_difference": 0.0,
+        "max_rgb_difference": 0,
+        "selection_confirmed": true,
+        "gate": "exact whole-gallery RGB equality at the original 190 DPI"
+      },
+      "runtime_seconds": 143.07
+    },
+    "handle-context.png": {
+      "kind": "source_native_prediction_render",
+      "source": "report/figures/qualitative_handles_source.pdf",
+      "source_sha256": "318282fde391ea6f19d1423265fe022eea891a776289a63f3c8e4f9a1f72d19a",
+      "output": "website/assets/handle-context.png",
+      "output_sha256": "1e707a079c2dc72754c2c67dfa895dc97f1f80fd0b0913747819ba84ce48f642",
+      "pixels": [
+        2400,
+        1846
+      ],
+      "preservation": "Exact verified PDF-space panel rectangle; native Matplotlib redraw from released predictions. No bitmap upscaling, image editing, inference, camera alignment, or specimen substitution.",
+      "crop_bounds_pdf_points": {
+        "x": 812.7,
+        "y": 73.1,
+        "width": 131.2,
+        "height": 100.9
+      },
+      "exporter": {
+        "source": "website/scripts/render_qualitative.py",
+        "source_sha256": "f50b46c70f866ef5f9536227c0b6e195cd3acc9fb07512e82a9fc1ad3139fb10"
+      },
+      "renderer": {
+        "name": "matplotlib_pdf_then_poppler_rectangle",
+        "native_scatter_dpi": 1400,
+        "page_render_width_px": 21946,
+        "target_min_width_px": 2400
+      },
+      "inputs": [
+        {
+          "source": "experiments/fig_complementarity.py",
+          "source_sha256": "03295299b5c30a2c0e1a7691874fa1bd425e1b7a4390a4daefe19011657030ef"
+        },
+        {
+          "source": "experiments/t2_union_compact.py",
+          "source_sha256": "d56b2520dcdcd042372428b2f780264360a74fc93ef87cfe2ddc97cbc5a876f6"
+        },
+        {
+          "source": "runs/a1_cache/seedrow_released/single/t2_validation_preds.pkl",
+          "source_sha256": "d687d5edef18ab03c4f004ad3dd11a26575535a7aa00556fcc356235f434a801"
+        },
+        {
+          "source": "runs/a1_cache/t2_union_preds_compact.npz",
+          "source_sha256": "3851746682d3c50d79340d8bdfbfc0f249d0530dd03de2dc06a8936cc33daeac"
+        },
+        {
+          "source": "runs/release_repro/t1_validation_preds.pkl",
+          "source_sha256": "4c57ffebc5e4ce2dee98cb46be74b66f43774727e978b9d654f30c6a665fcbe0"
+        },
+        {
+          "source": "data/pointcept_lite/validation/1ae9e5d2a6/coord.npy",
+          "source_sha256": "d9fbf77e5372d93c3dcfe8dca2db870ccbb4796dac3a47447652d438edf60b3a"
+        },
+        {
+          "source": "data/pointcept_lite/validation/2e74812d00/coord.npy",
+          "source_sha256": "714d366b73a38a88120407f789068f30e03e38f45f50d333a9eaabd812e2a4e1"
+        },
+        {
+          "source": "data/pointcept_lite/validation/5654092cc2/coord.npy",
+          "source_sha256": "435e301ae4fa779c3b21f2eb2e5179422fb74356e9e0693f7eb5100aadbf2c13"
+        },
+        {
+          "source": "data/pointcept_lite/validation/5eb31827b7/coord.npy",
+          "source_sha256": "a5658093ad4f9a5f9ab6fa67a3b55bd3f863357572e15d609cef320e273c687b"
+        },
+        {
+          "source": "data/pointcept_lite/validation/8a20d62ac0/coord.npy",
+          "source_sha256": "9df67c3957032f30811ce25ee1742dfca72d81778e99d23c8c7e327726065564"
+        },
+        {
+          "source": "data/pointcept_lite/validation/bcd2436daf/coord.npy",
+          "source_sha256": "d98981e4166a10b22e8569bef3e775f17d7d4ddc417f4d4b550caec5318bcc4f"
+        },
+        {
+          "source": "data/pointcept_lite/validation/f8062cb7ce/coord.npy",
+          "source_sha256": "aa86e5820762a8b7297d23096a0e6e008ba1e764cc9eda613e8046cb00ac77d0"
+        }
+      ],
+      "plot_provenance": {
+        "producer": "experiments/fig_complementarity.py",
+        "selection": "producer-defined deterministic named quantiles",
+        "source_gallery": "report/figures/qualitative_handles_source.pdf",
+        "union_decode": "experiments/t2_union_compact.py unpacked losslessly into a temporary pickle for the unchanged producer."
+      },
+      "reproduction": {
+        "reference": "report/figures/qualitative_handles_source.png",
+        "reference_sha256": "8c9be4534f8a1b13503f8bf62d1213ad209fcfb3723154285feb79e269350649",
+        "rendered_producer_png": "handles.png",
+        "pixels": [
+          3061,
+          690
+        ],
+        "mean_absolute_rgb_difference": 0.0,
+        "max_rgb_difference": 0,
+        "selection_confirmed": true,
+        "gate": "exact whole-gallery RGB equality at the original 190 DPI"
+      },
+      "runtime_seconds": 143.07
+    },
+    "paper.pdf": {
+      "kind": "byte_for_byte_copy",
+      "source": "report/build/main.pdf",
+      "source_sha256": "57506d9498a05f997dc1b85cca17ec69112989ed2e39dd8cf89f54e1d2532c7c",
+      "output": "website/assets/paper.pdf",
+      "output_sha256": "57506d9498a05f997dc1b85cca17ec69112989ed2e39dd8cf89f54e1d2532c7c"
+    }
+  }
+}
