@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export self-contained README buttons and copy the verified vector teaser.
+"""Export README buttons, the verified vector teaser, and the shared citation.
 
 This uses the same local icons as the website. No badge service, plotting run,
 network request, or additional package is needed.
@@ -57,7 +57,8 @@ def main() -> None:
     if hashlib.sha256(teaser.read_bytes()).hexdigest() != expected:
         raise ValueError("Teaser does not match the website's verified asset manifest")
     buttons = {
-        "project": button("project", "Project page", 152, primary=True),
+        "paper": button("paper", "Paper", 104, primary=True),
+        "project": button("project", "Project page", 152),
         "huggingface": button("huggingface", "Hugging Face", 166),
     }
     OUTPUT.mkdir(parents=True, exist_ok=True)
@@ -65,7 +66,8 @@ def main() -> None:
         (OUTPUT / f"button-{name}.svg").write_text(markup)
     shutil.copy2(teaser, OUTPUT / "teaser.svg")
     shutil.copy2(ASSETS / "icons/LICENSE.txt", OUTPUT / "LICENSE.txt")
-    print("Staged two self-contained resource buttons and the unchanged vector teaser.")
+    shutil.copy2(ASSETS / "citation.bib", ROOT / "opensource/CITATION.bib")
+    print("Staged three resource buttons, the unchanged vector teaser, and the shared arXiv citation.")
 
 
 if __name__ == "__main__":

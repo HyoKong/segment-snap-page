@@ -26,7 +26,7 @@
         <a href="#method">Method</a>
         <a href="#results">Results</a>
         <a href="#qualitative">Examples</a>
-        <a class="nav-paper" href="assets/paper.pdf" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
+        <a class="nav-paper" href="https://arxiv.org/abs/2609.25247" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
@@ -50,7 +50,7 @@
       <p class="affiliations"><span><sup>1</sup> National University of Singapore</span><span><sup>2</sup> The Hong Kong Polytechnic University</span></p>
       <p class="correspondence"><span aria-hidden="true">✉</span> Corresponding author: <a href="mailto:xingyi.yang@polyu.edu.hk">Xingyi Yang</a></p>
       <div class="hero-actions">
-        <a class="button button-primary" data-resource="paper" href="assets/paper.pdf" target="_blank" rel="noopener">
+        <a class="button button-primary" data-resource="paper" href="https://arxiv.org/abs/2609.25247" target="_blank" rel="noopener">
           <img class="resource-icon" src="assets/icons/paper.svg" width="20" height="20" alt="" aria-hidden="true">Paper <span aria-hidden="true">↗</span>
         </a>
         <a class="button button-secondary" data-resource="code" href="https://github.com/HyoKong/Segment-Snap" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/code.svg" width="20" height="20" alt="" aria-hidden="true">Code <span aria-hidden="true">↗</span></a>
@@ -135,7 +135,7 @@
           </article>
         </div>
         <div class="result-notes"><p><strong>Reading the results.</strong> Motion AP requires a correct mask, axis and rotational origin; handle AP evaluates instance masks and motion classes. Scores are percentages. Gains use unrounded scores, so rounded endpoints may not subtract exactly.</p><p>Part-only and full-context labels are <strong>alternative corrections of the same union</strong>. Full context includes dense-label fallback and adds <span data-evidence="handle_full_vote_delta">1.34</span> pp, not 0.98 + 1.34 pp. Proposal gains show complementarity, not an isolated causal effect of parent conditioning.</p></div>
-        <details class="evidence-details"><summary>What do the stability controls show?</summary><div><p>Appending children improves handle AP by <span data-evidence="sep8_child_seed_b_union_step">3.94</span>–<span data-evidence="sep8_child_reference_union_step">5.01</span> pp across three child-training draws. The reference proposal gain has a paired 95% scene interval of [<span data-evidence="sep20_child_union_ci_low">+1.47</span>, <span data-evidence="sep20_child_union_ci_high">+8.56</span>] pp.</p><p>Full contextual correction is positive in all three draws but varies from <span data-evidence="sep8_child_seed_a_vote_step">0.19</span> to <span data-evidence="sep8_child_reference_vote_step">1.34</span> pp. Scene intervals use fixed predictions and do not measure retraining variability. Validation also informed model selection; these are development-set comparisons.</p><a class="text-link" href="assets/paper.pdf#page=13" target="_blank" rel="noopener">Read the controls in the report <span aria-hidden="true">↗</span></a></div></details>
+        <details class="evidence-details"><summary>What do the stability controls show?</summary><div><p>Appending children improves handle AP by <span data-evidence="sep8_child_seed_b_union_step">3.94</span>–<span data-evidence="sep8_child_reference_union_step">5.01</span> pp across three child-training draws. The reference proposal gain has a paired 95% scene interval of [<span data-evidence="sep20_child_union_ci_low">+1.47</span>, <span data-evidence="sep20_child_union_ci_high">+8.56</span>] pp.</p><p>Full contextual correction is positive in all three draws but varies from <span data-evidence="sep8_child_seed_a_vote_step">0.19</span> to <span data-evidence="sep8_child_reference_vote_step">1.34</span> pp. Scene intervals use fixed predictions and do not measure retraining variability. Validation also informed model selection; these are development-set comparisons.</p><a class="text-link" href="https://arxiv.org/pdf/2609.25247#page=13" target="_blank" rel="noopener">Read the controls in the paper <span aria-hidden="true">↗</span></a></div></details>
 
         <aside class="challenge-banner" id="challenge" data-reveal aria-labelledby="challenge-heading">
           <div class="challenge-title"><span class="challenge-kicker"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6 3h8v4a4 4 0 0 1-8 0V3ZM6 4H3v2a3 3 0 0 0 3 3m8-5h3v2a3 3 0 0 1-3 3m-4 2v5m-3 1h6"/></svg> Final challenge result</span><h3 id="challenge-heading">First place.<br>A joint scene understanding.</h3><p>Team TnG · Articulate3D Challenge</p></div>
@@ -248,19 +248,18 @@
       <div class="container">
       <div class="resources-heading" data-reveal><p class="section-index">Research resources</p><h2 id="citation-heading">Take a closer look.</h2><p>The paper, code, and model checkpoints.</p></div>
       <div class="resource-links">
-        <a data-resource="paper" href="assets/paper.pdf" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/paper.svg" width="28" height="28" alt="" aria-hidden="true"><span><strong>Read the paper</strong><span>Method, experiments, and discussion</span></span><span aria-hidden="true">↗</span></a>
+        <a data-resource="paper" href="https://arxiv.org/abs/2609.25247" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/paper.svg" width="28" height="28" alt="" aria-hidden="true"><span><strong>Read the paper</strong><span>arXiv:2609.25247 · Method and results</span></span><span aria-hidden="true">↗</span></a>
         <a data-resource="code" href="https://github.com/HyoKong/Segment-Snap" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/code.svg" width="28" height="28" alt="" aria-hidden="true"><span><strong>Code repository</strong><span>Segment-Snap on GitHub</span></span><span aria-hidden="true">↗</span></a>
         <a data-resource="huggingface" href="https://huggingface.co/imsuperkong/Segment-Snap" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/huggingface.svg" width="28" height="28" alt="" aria-hidden="true"><span><strong>Model checkpoints</strong><span>Segment-Snap on Hugging Face</span></span><span aria-hidden="true">↗</span></a>
       </div>
-      <div class="citation-grid"><div><h3>Cite this work.</h3><p>If this work is useful to your research, please cite the technical report.</p></div>
-        <div class="citation-block"><div class="citation-header"><span>BibTeX · technical report</span><button type="button" class="copy-button" data-copy-citation hidden>Copy citation</button></div><pre><code id="bibtex">@techreport{kong2026segmentsnap,
-  title  = {Geometric and Semantic Coupling for
-            Interaction Understanding in 3D Scenes},
-  author = {Kong, Hanyang and Yang, Xingyi},
-  year   = {2026},
-  institution = {National University of Singapore
-                 and The Hong Kong Polytechnic University},
-  url    = {https://hyokong.github.io/segment-snap-page/}
+      <div class="citation-grid"><div><h3>Cite this work.</h3><p>If this work is useful to your research, please cite our arXiv preprint.</p><p><a class="text-link" href="assets/citation.bib" download="segment-snap.bib">Download BibTeX <span aria-hidden="true">↓</span></a></p></div>
+        <div class="citation-block"><div class="citation-header"><span>BibTeX · arXiv</span><button type="button" class="copy-button" data-copy-citation hidden>Copy citation</button></div><pre><code id="bibtex">@article{kong2026segmentsnap,
+  title   = {Geometric and Semantic Coupling for
+             Interaction Understanding in 3D Scenes},
+  author  = {Kong, Hanyang and Yang, Xingyi},
+  journal = {arXiv preprint arXiv:2609.25247},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2609.25247}
 }</code></pre><p id="copy-status" class="copy-status" role="status" aria-live="polite"></p></div>
       </div>
       </div>

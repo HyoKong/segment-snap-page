@@ -14,7 +14,7 @@ python3 -m http.server 8765 --bind 127.0.0.1 --directory website
 
 Visit **http://localhost:8765/**. This server is local to the machine running it. The page also works under the nested `/segment-snap-page/` project path.
 
-The page presents the unified interaction-understanding task, three predictors, training-free motion decoding, both coupling directions, controlled validation gains, final challenge results, and selected qualitative successes and failures. The current report PDF, a technical-report citation, and the author-supplied [GitHub repository](https://github.com/HyoKong/Segment-Snap) and [Hugging Face checkpoint page](https://huggingface.co/imsuperkong/Segment-Snap) are included. An arXiv or publication link has not been supplied and is intentionally omitted.
+The page presents the unified interaction-understanding task, three predictors, training-free motion decoding, both coupling directions, controlled validation gains, final challenge results, and selected qualitative successes and failures. All public Paper buttons link to the [arXiv preprint, 2609.25247](https://arxiv.org/abs/2609.25247); its title, authors, year and identifier were verified against arXiv on September 23, 2026. The page includes matching copyable/downloadable BibTeX in `@article` format, the [GitHub repository](https://github.com/HyoKong/Segment-Snap), and the [Hugging Face checkpoint page](https://huggingface.co/imsuperkong/Segment-Snap). The local `assets/paper.pdf` is retained for offline review, not as the primary paper destination.
 
 The revised layout is Apple-inspired, not an Apple clone: white and pale-gray surfaces, charcoal typography, a slim translucent header, restrained blue actions, and larger unframed figures. There are no Apple assets or downloaded proprietary fonts. The original first-review sources are preserved in `preview/design-v1.zip`.
 
@@ -38,9 +38,10 @@ In **See the difference → Hinge placement**, select **Centroid** or **Handle-g
 | `assets/` | Paper figures, selected qualitative panels, PDF, favicon |
 | `EVIDENCE.md` | Internal provenance and interpretation notes; not website content |
 | `assets/manifest.json` | Internal source/output hashes and exact PDF panel selections |
+| `assets/citation.bib` | Verified arXiv citation; source for the public repository's `CITATION.bib` |
 | `scripts/render_illustrations.py` | Reuse report drawing functions for vector / 900-DPI SVG exports |
 | `scripts/render_qualitative.py` | Replot selected saved predictions at native high resolution |
-| `scripts/prepare_readme_assets.py` | Generate local README resource buttons and copy the verified vector teaser |
+| `scripts/prepare_readme_assets.py` | Generate README resource buttons and copy the verified teaser and shared citation |
 | `assets/icons/` | Shared GitHub, Hugging Face, project, and paper icons with source/license notes |
 | `../DESIGN.md` | Design decisions and implementation constraints |
 
@@ -63,7 +64,7 @@ For a text-only paper update, avoid replotting unchanged scientific figures:
 python3 website/scripts/prepare_assets.py --paper-only
 ```
 
-After changing a shared icon or the teaser, refresh the public repository's README assets:
+After changing a shared icon, the teaser, or `assets/citation.bib`, refresh the public repository's README assets and citation:
 
 ```sh
 python3 website/scripts/prepare_readme_assets.py
@@ -71,10 +72,13 @@ python3 website/scripts/prepare_readme_assets.py
 
 Both surfaces use local SVG icons; the README buttons embed their icons instead of depending
 on a remote badge service. The README teaser is identical to `assets/teaser.svg`.
-The canonical project URL is present in website metadata, citations, the paper, and the README's
-Project page button. Buttons avoid self-links: the website shows Paper / Code / Hugging Face;
-the README shows Project page / Hugging Face. Website icons are decorative and paired with
-visible link labels.
+The project URL is present in website metadata, the paper, and the README's Project page button.
+Paper buttons and BibTeX use the arXiv URL. The downloadable `assets/citation.bib`, generated
+`opensource/CITATION.bib`, website citation block, and README citation block must agree; the
+static checker verifies the `@article` entry, arXiv journal field, metadata, and exact contents. Update both visible blocks when
+changing the canonical BibTeX file. Buttons avoid self-links: the website shows Paper / Code /
+Hugging Face; the README shows Paper / Project page / Hugging Face. Website icons are decorative
+and paired with visible link labels.
 
 Asset preparation uses the repository's existing `.venv/bin/python` plotting environment and Poppler.
 It needs the saved local prediction artifacts and point clouds, but no GPU, inference run or new
@@ -85,7 +89,7 @@ The script reports stale sources or mismatches instead of accepting substitute i
 
 Browser checks use the installed Chrome and Node 20 native WebSocket support, with no npm dependencies. They test nested-path and direct-file previews, exact resource destinations, image/PDF loading, 320–1440 px layouts, all gallery categories at narrow widths, before/after keyboard and selected states, figure-dialog focus, citation copying and its fallback, reduced motion, and no-JavaScript behavior. High-density checks cover 2× desktop and 3× mobile displays, the actual pixel capacity of each result panel, and SVG/PNG dialog sources. Screenshots and the machine-readable verdict are generated in `preview/` (git-ignored).
 
-Verified September 21, 2026: 78 browser checks passed, including canonical URLs, resource icons without self-links, button alignment, local README asset rendering, 2× desktop / 3× mobile pixel capacity, high-resolution dialogs, actual title line counts at 768/820/1024/1440px and visible legends in every gallery category. The first-place callout is visible above the title without scrolling at 320/390/820/1440px, meets 4.5:1 text contrast, and remains visible without JavaScript. It links to the official leaderboard and the dated result details; test scores remain separate from validation gains. Both original prediction galleries were reproduced with exact RGB equality before high-resolution export. Desktop, tablet, mobile, pipeline, quantitative-results, per-category, and README asset previews are saved in `preview/`. The README preview uses GitHub-like image sizing; it does not test GitHub's production renderer. This is local review, not a deployed site.
+Verified September 23, 2026: 80 browser checks passed, including arXiv destinations, downloadable/copyable citation equality, canonical project metadata, resource icons without self-links, button alignment, local README asset rendering, 2× desktop / 3× mobile pixel capacity, high-resolution dialogs, actual title line counts at 768/820/1024/1440px and visible legends in every gallery category. The first-place callout is visible above the title without scrolling at 320/390/820/1440px, meets 4.5:1 text contrast, and remains visible without JavaScript. It links to the official leaderboard and the dated result details; test scores remain separate from validation gains. Both original prediction galleries were reproduced with exact RGB equality before high-resolution export. Desktop, tablet, mobile, pipeline, quantitative-results, citation, per-category, and README asset previews are saved in `preview/`. The README preview uses GitHub-like image sizing; it does not test GitHub's production renderer. This is local review, not a deployment of these changes.
 
 ## Deployment files
 
@@ -100,6 +104,7 @@ assets/*.png
 assets/teaser.svg
 assets/pipeline.svg
 assets/paper.pdf
+assets/citation.bib
 assets/favicon.svg
 assets/icons/
 ```

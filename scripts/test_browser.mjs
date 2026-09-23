@@ -24,7 +24,7 @@ const check = (condition, name, details = null) => {
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 // An ephemeral nested-path server tests portability to a personal GitHub subpath.
-const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png', '.svg': 'image/svg+xml', '.pdf': 'application/pdf' };
+const types = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png', '.svg': 'image/svg+xml', '.pdf': 'application/pdf', '.bib': 'text/plain; charset=utf-8' };
 const server = createServer(async (request, response) => {
   try {
     const pathname = new URL(request.url, 'http://localhost').pathname;
@@ -141,7 +141,18 @@ try {
       return icon?.complete && icon.naturalWidth > 0 && icon.alt === '' && icon.getAttribute('aria-hidden') === 'true' && link.textContent.trim().length >= 4;
     });
   })`), 'Paper, Code, and Hugging Face have loaded icons and labels, without a project self-link');
-  check(await evaluate(`document.querySelector('#bibtex').textContent.includes('https://hyokong.github.io/segment-snap-page/')`), 'Copyable citation includes the canonical project URL');
+  check(await evaluate(`(() => {
+    const citation = document.querySelector('#bibtex').textContent;
+    return citation.startsWith('@article{kong2026segmentsnap,') &&
+      citation.includes('https://arxiv.org/abs/2609.25247') &&
+      citation.includes('journal = {arXiv preprint arXiv:2609.25247}');
+  })()`), 'Copyable citation uses article format with the verified arXiv identifier');
+  check(await evaluate(`[...document.querySelectorAll('.nav-paper, [data-resource="paper"]')].every(link => link.href === 'https://arxiv.org/abs/2609.25247') && document.querySelector('.evidence-details .text-link').href === 'https://arxiv.org/pdf/2609.25247#page=13'`), 'All public Paper buttons and the controls link point to arXiv');
+  const citationResponse = await fetch(base + 'assets/citation.bib');
+  const citationText = await citationResponse.text();
+  check(citationResponse.ok && citationText.trim() === await evaluate('document.querySelector("#bibtex").textContent.trim()') &&
+    await evaluate(`document.querySelector('a[href="assets/citation.bib"]').hasAttribute('download')`),
+    'Downloadable BibTeX matches the displayed and copyable citation');
   check(await evaluate(`(() => {
     const award = document.querySelector('.award-link');
     return document.querySelectorAll('.award-link').length === 1 &&
@@ -167,7 +178,7 @@ try {
   })()`), 'Winner callout text meets 4.5:1 contrast on its warm background');
   await screenshot('desktop.png');
   await screenshot('desktop-full.png', true);
-  for (const id of ['method', 'results', 'qualitative']) {
+  for (const id of ['method', 'results', 'qualitative', 'citation']) {
     const region = await evaluate(`(() => {
       const box = document.getElementById('${id}').getBoundingClientRect();
       return { x: 0, y: box.top + scrollY, width: document.documentElement.clientWidth,
@@ -441,7 +452,7 @@ try {
   check(await evaluate('[...document.images].filter(i => i.hasAttribute("src")).every(i => i.complete && i.naturalWidth > 0)'), 'Direct file preview loads local figures without a server');
   check(browserErrors.length === 0, 'No browser exceptions or failed HTTP resources', browserErrors);
   const paper = await fetch(base + 'assets/paper.pdf');
-  check(paper.ok && Buffer.from(await paper.arrayBuffer()).subarray(0, 5).toString() === '%PDF-', 'Paper link serves a real PDF');
+  check(paper.ok && Buffer.from(await paper.arrayBuffer()).subarray(0, 5).toString() === '%PDF-', 'Offline review PDF remains available as a valid local asset');
 
   // Preview the README's actual HTML asset blocks with GitHub-like image sizing.
   // This checks our local assets, not GitHub's production Markdown renderer.
@@ -462,7 +473,7 @@ try {
       ${readmeAssets}</main></body></html>`,
   });
   await evaluate('Promise.all([...document.images].map(image => image.decode()))');
-  check(await evaluate('document.images.length === 3 && [...document.images].every(image => image.complete && image.naturalWidth > 0)'), 'README project/Hugging Face buttons and vector teaser render locally');
+  check(await evaluate('document.images.length === 4 && [...document.images].every(image => image.complete && image.naturalWidth > 0)'), 'README paper/project/Hugging Face buttons and vector teaser render locally');
   for (const width of [1000, 390, 320]) {
     await viewport(width, 820, width < 700);
     check(await evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth'), `README asset preview fits at ${width}px`);

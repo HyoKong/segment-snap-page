@@ -19,6 +19,7 @@ import xml.etree.ElementTree as ET
 SITE = Path(__file__).resolve().parents[1]
 ROOT = SITE.parent
 PROJECT_URL = "https://hyokong.github.io/segment-snap-page/"
+PAPER_URL = "https://arxiv.org/abs/2609.25247"
 HANYANG_URL = "https://hyokong.github.io/"
 LEADERBOARD_URL = "https://art3d-challenge.mooo.com/web/challenges/challenge-page/1/leaderboard/"
 sys.path.insert(0, str(ROOT / "report/scripts"))
@@ -221,9 +222,27 @@ def main():
                and node.attrs.get("content") == PROJECT_URL for node in document.elements),
            "Open Graph URL must match the canonical URL")
     citation = next(node for node in document.elements if node.attrs.get("id") == "bibtex")
-    expect(PROJECT_URL in citation.text(), "Citation must include the canonical project URL")
+    citation_file = (SITE / "assets/citation.bib").read_text().strip()
+    expect(citation.text().strip() == citation_file, "Displayed and downloadable BibTeX must be identical")
+    expect(citation_file.startswith("@article{kong2026segmentsnap,"), "Keep the stable citation key and use an article entry")
+    citation_fields = {
+        "title": expected_title, "author": "Kong, Hanyang and Yang, Xingyi", "year": "2026",
+        "journal": "arXiv preprint arXiv:2609.25247", "url": PAPER_URL,
+    }
+    for field, value in citation_fields.items():
+        match = re.search(rf"\b{field}\s*=\s*\{{([^}}]*)\}}", citation_file)
+        expect(match is not None and " ".join(match.group(1).split()) == value,
+               f"Citation differs from verified arXiv metadata: {field}")
+    expect(any(node.tag == "a" and node.attrs.get("href") == "assets/citation.bib"
+               and "download" in node.attrs for node in document.elements),
+           "Provide a downloadable BibTeX file")
+    navigation_paper = next(node for node in document.elements
+                            if "nav-paper" in (node.attrs.get("class") or "").split())
+    expect(navigation_paper.attrs.get("href") == PAPER_URL, "Navigation Paper button must open arXiv")
+    expect(not any((href or "").startswith("assets/paper.pdf") for href in external_hrefs),
+           "Public paper links must use arXiv, not the offline review PDF")
     resource_urls = {
-        "paper": "assets/paper.pdf",
+        "paper": PAPER_URL,
         "code": "https://github.com/HyoKong/Segment-Snap",
         "huggingface": "https://huggingface.co/imsuperkong/Segment-Snap",
     }
@@ -250,8 +269,8 @@ def main():
     readme_buttons = [node for node in readme_document.elements if node.tag == "a"
                       and any(child.tag == "img" and "button-" in (child.attrs.get("src") or "")
                               for child in descendants(node))]
-    readme_resource_urls = {"project": PROJECT_URL, "huggingface": resource_urls["huggingface"]}
-    expect(len(readme_buttons) == 2, "README needs project and checkpoint buttons without a code self-link")
+    readme_resource_urls = {"paper": PAPER_URL, "project": PROJECT_URL, "huggingface": resource_urls["huggingface"]}
+    expect(len(readme_buttons) == 3, "README needs paper, project, and checkpoint buttons without a code self-link")
     for name, url in readme_resource_urls.items():
         expect(any(node.attrs.get("href") == url
                    and any(child.tag == "img" and child.attrs.get("src") == f"docs/assets/button-{name}.svg"
@@ -259,6 +278,12 @@ def main():
                    for node in readme_buttons), f"README resource/icon mismatch: {name}")
     expect(not any(node.attrs.get("href") == resource_urls["code"] for node in readme_buttons),
            "README must not include a GitHub code button pointing to itself")
+    readme_citation = re.search(r"```bibtex\s*\n(.*?)\n```", readme, re.S)
+    expect(readme_citation is not None and readme_citation.group(1).strip() == citation_file,
+           "Website and README citations must match")
+    expect((ROOT / "opensource/CITATION.bib").read_text().strip() == citation_file,
+           "Repository CITATION.bib must match the downloadable website citation")
+    expect("[CITATION.bib](CITATION.bib)" in readme, "README must link its reusable BibTeX file")
     expect(readme.index('src="docs/assets/teaser.svg"') < readme.index("## The idea"),
            "README teaser must appear near the top, before method details")
     expect(digest(ROOT / "opensource/docs/assets/teaser.svg") == digest(SITE / "assets/teaser.svg"),
