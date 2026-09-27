@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="680" viewBox="0 0 1440 680" role="img" aria-labelledby="title desc">
+<title id="title">All validation scenes: motion AP comparison</title>
+<desc id="desc">Paired motion AP on all 42 validation scenes. Teal dots are Segment-Snap and muted-brown dots are REACT3D. Rings mark REACT3D scenes with certified zero predictions; the cross marks the scene with no ground-truth part.</desc>
+<style>text{font-family:Inter,Arial,sans-serif;fill:#18212b}.grid{stroke:#d9e0e6;stroke-width:1}.pair{stroke:#bfc9d1;stroke-width:1}.ours{fill:#087f85}.react{fill:#9a5a3a}.zero{fill:white;stroke:#9a5a3a;stroke-width:2}.axis{font-size:14px;fill:#53616d}.label{font-size:12px;fill:#53616d}.legend{font-size:15px;fill:#27333c}</style>
+<rect width="1440" height="680" fill="white"/>
+<text x="78" y="20" font-size="17" font-weight="700">All 42 validation scenes · joint motion AP</text>
+<line class="grid" x1="78" x2="1414" y1="530.00" y2="530.00"/>
+<text class="axis" text-anchor="end" x="68" y="534.00">0</text>
+<line class="grid" x1="78" x2="1414" y1="405.00" y2="405.00"/>
+<text class="axis" text-anchor="end" x="68" y="409.00">25</text>
+<line class="grid" x1="78" x2="1414" y1="280.00" y2="280.00"/>
+<text class="axis" text-anchor="end" x="68" y="284.00">50</text>
+<line class="grid" x1="78" x2="1414" y1="155.00" y2="155.00"/>
+<text class="axis" text-anchor="end" x="68" y="159.00">75</text>
+<line class="grid" x1="78" x2="1414" y1="30.00" y2="30.00"/>
+<text class="axis" text-anchor="end" x="68" y="34.00">100</text>
+<text class="axis" transform="translate(20 280.0) rotate(-90)" text-anchor="middle">motion AP (%)</text>
+<g><title>1204e08f17: Segment-Snap 100.00%, REACT3D 0.00%</title><line class="pair" x1="93.90" x2="93.90" y1="30.00" y2="530.00"/>
+<circle class="ours" cx="91.50" cy="30.00" r="4"/>
+<circle class="react" cx="96.30" cy="530.00" r="4"/>
+<text class="label" transform="translate(96.90 576.00) rotate(60)">1204e0</text>
+</g>
+<g><title>1841a0b525: Segment-Snap 100.00%, REACT3D 0.00%</title><line class="pair" x1="125.71" x2="125.71" y1="30.00" y2="530.00"/>
+<circle class="ours" cx="123.31" cy="30.00" r="4"/>
+<circle class="react" cx="128.11" cy="530.00" r="4"/>
+</g>
+<g><title>30f4a2b44d: Segment-Snap 100.00%, REACT3D 25.00%</title><line class="pair" x1="157.52" x2="157.52" y1="30.00" y2="405.00"/>
+<circle class="ours" cx="155.12" cy="30.00" r="4"/>
+<circle class="react" cx="159.92" cy="405.00" r="4"/>
+</g>
+<g><title>40b56bf310: Segment-Snap 100.00%, REACT3D 0.00%</title><line class="pair" x1="189.33" x2="189.33" y1="30.00" y2="530.00"/>
+<circle class="ours" cx="186.93" cy="30.00" r="4"/>
+<circle class="react" cx="191.73" cy="530.00" r="4"/>
+<text class="label" transform="translate(192.33 576.00) rotate(60)">40b56b</text>
+</g>
+<g><title>5748ce6f01: Segment-Snap 100.00%, REACT3D 100.00%</title><line class="pair" x1="221.14" x2="221.14" y1="30.00" y2="30.00"/>
+<circle class="ours" cx="218.74" cy="30.00" r="4"/>
+<circle class="react" cx="223.54" cy="30.00" r="4"/>
+</g>
+<g><title>8d563fc2cc: Segment-Snap 100.00%, REACT3D 25.00%</title><line class="pair" x1="252.95" x2="252.95" y1="30.00" y2="405.00"/>
+<circle class="ours" cx="250.55" cy="30.00" r="4"/>
+<circle class="react" cx="255.35" cy="405.00" r="4"/>
+</g>
+<g><title>8f82c394d6: Segment-Snap 100.00%, REACT3D 0.00%; REACT3D certified zero predictions</title><line class="pair" x1="284.76" x2="284.76" y1="30.00" y2="530.00"/>
+<circle class="ours" cx="282.36" cy="30.00" r="4"/>
+<circle class="zero" cx="287.16" cy="530.00" r="4"/>
+<text class="label" transform="translate(287.76 576.00) rotate(60)">8f82c3</text>
+</g>
+<g><title>e898c76c1f: Segment-Snap 100.00%, REACT3D 0.00%</title><line class="pair" x1="316.57" x2="316.57" y1="30.00" y2="530.00"/>
+<circle class="ours" cx="314.17" cy="30.00" r="4"/>
+<circle class="react" cx="318.97" cy="530.00" r="4"/>
+</g>
+<g><title>1ae9e5d2a6: Segment-Snap 100.00%, REACT3D 0.00%</title><line class="pair" x1="348.38" x2="348.38" y1="30.00" y2="530.00"/>
+<circle class="ours" cx="345.98" cy="30.00" r="4"/>
+<circle class="react" cx="350.78" cy="530.00" r="4"/>
+</g>
+<g><title>b20a261fdf: Segment-Snap 100.00%, REACT3D 20.00%</title><line class="pair" x1="380.19" x2="380.19" y1="30.00" y2="430.00"/>
+<circle class="ours" cx="377.79" cy="30.00" r="4"/>
+<circle class="react" cx="382.59" cy="430.00" r="4"/>
+<text class="label" transform="translate(383.19 576.00) rotate(60)">b20a26</text>
+</g>
+<g><title>f8062cb7ce: Segment-Snap 100.00%, REACT3D 0.00%</title><line class="pair" x1="412.00" x2="412.00" y1="30.00" y2="530.00"/>
+<circle class="ours" cx="409.60" cy="30.00" r="4"/>
+<circle class="react" cx="414.40" cy="530.00" r="4"/>
+</g>
+<g><title>419cbe7c11: Segment-Snap 90.91%, REACT3D 6.44%</title><line class="pair" x1="443.81" x2="443.81" y1="75.45" y2="497.80"/>
+<circle class="ours" cx="441.41" cy="75.45" r="4"/>
+<circle class="react" cx="446.21" cy="497.80" r="4"/>
+</g>
+<g><title>41b00feddb: Segment-Snap 85.71%, REACT3D 14.29%</title><line class="pair" x1="475.62" x2="475.62" y1="101.43" y2="458.57"/>
+<circle class="ours" cx="473.22" cy="101.43" r="4"/>
+<circle class="react" cx="478.02" cy="458.57" r="4"/>
+<text class="label" transform="translate(478.62 576.00) rotate(60)">41b00f</text>
+</g>
+<g><title>f5401524e5: Segment-Snap 80.65%, REACT3D 0.00%</title><line class="pair" x1="507.43" x2="507.43" y1="126.73" y2="530.00"/>
+<circle class="ours" cx="505.03" cy="126.73" r="4"/>
+<circle class="react" cx="509.83" cy="530.00" r="4"/>
+</g>
+<g><title>8890d0a267: Segment-Snap 80.00%, REACT3D 20.00%</title><line class="pair" x1="539.24" x2="539.24" y1="130.00" y2="430.00"/>
+<circle class="ours" cx="536.84" cy="130.00" r="4"/>
+<circle class="react" cx="541.64" cy="430.00" r="4"/>
+</g>
+<g><title>8a20d62ac0: Segment-Snap 79.26%, REACT3D 0.00%</title><line class="pair" x1="571.05" x2="571.05" y1="133.68" y2="530.00"/>
+<circle class="ours" cx="568.65" cy="133.68" r="4"/>
+<circle class="react" cx="573.45" cy="530.00" r="4"/>
+<text class="label" transform="translate(574.05 576.00) rotate(60)">8a20d6</text>
+</g>
+<g><title>e91722b5a3: Segment-Snap 75.52%, REACT3D 23.59%</title><line class="pair" x1="602.86" x2="602.86" y1="152.39" y2="412.03"/>
+<circle class="ours" cx="600.46" cy="152.39" r="4"/>
+<circle class="react" cx="605.26" cy="412.03" r="4"/>
+</g>
+<g><title>4a1a3a7dc5: Segment-Snap 67.71%, REACT3D 0.00%</title><line class="pair" x1="634.67" x2="634.67" y1="191.46" y2="530.00"/>
+<circle class="ours" cx="632.27" cy="191.46" r="4"/>
+<circle class="react" cx="637.07" cy="530.00" r="4"/>
+</g>
+<g><title>9859de300f: Segment-Snap 67.35%, REACT3D 43.79%</title><line class="pair" x1="666.48" x2="666.48" y1="193.27" y2="311.06"/>
+<circle class="ours" cx="664.08" cy="193.27" r="4"/>
+<circle class="react" cx="668.88" cy="311.06" r="4"/>
+<text class="label" transform="translate(669.48 576.00) rotate(60)">9859de</text>
+</g>
+<g><title>4422722c49: Segment-Snap 64.58%, REACT3D 12.50%</title><line class="pair" x1="698.29" x2="698.29" y1="207.08" y2="467.50"/>
+<circle class="ours" cx="695.89" cy="207.08" r="4"/>
+<circle class="react" cx="700.69" cy="467.50" r="4"/>
+</g>
+<g><title>38d58a7a31: Segment-Snap 60.00%, REACT3D 0.00%</title><line class="pair" x1="730.10" x2="730.10" y1="230.00" y2="530.00"/>
+<circle class="ours" cx="727.70" cy="230.00" r="4"/>
+<circle class="react" cx="732.50" cy="530.00" r="4"/>
+</g>
+<g><title>e9e16b6043: Segment-Snap 54.92%, REACT3D 27.78%</title><line class="pair" x1="761.90" x2="761.90" y1="255.40" y2="391.11"/>
+<circle class="ours" cx="759.50" cy="255.40" r="4"/>
+<circle class="react" cx="764.30" cy="391.11" r="4"/>
+<text class="label" transform="translate(764.90 576.00) rotate(60)">e9e16b</text>
+</g>
+<g><title>55b2bf8036: Segment-Snap 51.24%, REACT3D 34.51%</title><line class="pair" x1="793.71" x2="793.71" y1="273.78" y2="357.43"/>
+<circle class="ours" cx="791.31" cy="273.78" r="4"/>
+<circle class="react" cx="796.11" cy="357.43" r="4"/>
+</g>
+<g><title>6464461276: Segment-Snap 50.39%, REACT3D 12.94%</title><line class="pair" x1="825.52" x2="825.52" y1="278.03" y2="465.28"/>
+<circle class="ours" cx="823.12" cy="278.03" r="4"/>
+<circle class="react" cx="827.92" cy="465.28" r="4"/>
+</g>
+<g><title>0a76e06478: Segment-Snap 50.13%, REACT3D 25.00%</title><line class="pair" x1="857.33" x2="857.33" y1="279.37" y2="405.00"/>
+<circle class="ours" cx="854.93" cy="279.37" r="4"/>
+<circle class="react" cx="859.73" cy="405.00" r="4"/>
+<text class="label" transform="translate(860.33 576.00) rotate(60)">0a76e0</text>
+</g>
+<g><title>5656608266: Segment-Snap 50.00%, REACT3D 0.00%; REACT3D certified zero predictions</title><line class="pair" x1="889.14" x2="889.14" y1="280.00" y2="530.00"/>
+<circle class="ours" cx="886.74" cy="280.00" r="4"/>
+<circle class="zero" cx="891.54" cy="530.00" r="4"/>
+</g>
+<g><title>5eb31827b7: Segment-Snap 50.00%, REACT3D 0.00%</title><line class="pair" x1="920.95" x2="920.95" y1="280.00" y2="530.00"/>
+<circle class="ours" cx="918.55" cy="280.00" r="4"/>
+<circle class="react" cx="923.35" cy="530.00" r="4"/>
+</g>
+<g><title>61adeff7d5: Segment-Snap 48.33%, REACT3D 2.50%</title><line class="pair" x1="952.76" x2="952.76" y1="288.34" y2="517.50"/>
+<circle class="ours" cx="950.36" cy="288.34" r="4"/>
+<circle class="react" cx="955.16" cy="517.50" r="4"/>
+<text class="label" transform="translate(955.76 576.00) rotate(60)">61adef</text>
+</g>
+<g><title>1366d5ae89: Segment-Snap 48.24%, REACT3D 10.00%</title><line class="pair" x1="984.57" x2="984.57" y1="288.82" y2="480.00"/>
+<circle class="ours" cx="982.17" cy="288.82" r="4"/>
+<circle class="react" cx="986.97" cy="480.00" r="4"/>
+</g>
+<g><title>2e74812d00: Segment-Snap 47.24%, REACT3D 7.14%</title><line class="pair" x1="1016.38" x2="1016.38" y1="293.82" y2="494.29"/>
+<circle class="ours" cx="1013.98" cy="293.82" r="4"/>
+<circle class="react" cx="1018.78" cy="494.29" r="4"/>
+</g>
+<g><title>e398684d27: Segment-Snap 47.20%, REACT3D 0.00%; REACT3D certified zero predictions</title><line class="pair" x1="1048.19" x2="1048.19" y1="293.99" y2="530.00"/>
+<circle class="ours" cx="1045.79" cy="293.99" r="4"/>
+<circle class="zero" cx="1050.59" cy="530.00" r="4"/>
+<text class="label" transform="translate(1051.19 576.00) rotate(60)">e39868</text>
+</g>
+<g><title>bcd2436daf: Segment-Snap 40.24%, REACT3D 25.00%</title><line class="pair" x1="1080.00" x2="1080.00" y1="328.81" y2="405.00"/>
+<circle class="ours" cx="1077.60" cy="328.81" r="4"/>
+<circle class="react" cx="1082.40" cy="405.00" r="4"/>
+</g>
+<g><title>5ee7c22ba0: Segment-Snap 39.58%, REACT3D 0.00%</title><line class="pair" x1="1111.81" x2="1111.81" y1="332.08" y2="530.00"/>
+<circle class="ours" cx="1109.41" cy="332.08" r="4"/>
+<circle class="react" cx="1114.21" cy="530.00" r="4"/>
+</g>
+<g><title>5654092cc2: Segment-Snap 37.50%, REACT3D 5.56%</title><line class="pair" x1="1143.62" x2="1143.62" y1="342.51" y2="502.22"/>
+<circle class="ours" cx="1141.22" cy="342.51" r="4"/>
+<circle class="react" cx="1146.02" cy="502.22" r="4"/>
+<text class="label" transform="translate(1146.62 576.00) rotate(60)">565409</text>
+</g>
+<g><title>25f3b7a318: Segment-Snap 33.33%, REACT3D 0.00%</title><line class="pair" x1="1175.43" x2="1175.43" y1="363.33" y2="530.00"/>
+<circle class="ours" cx="1173.03" cy="363.33" r="4"/>
+<circle class="react" cx="1177.83" cy="530.00" r="4"/>
+</g>
+<g><title>27dd4da69e: Segment-Snap 30.89%, REACT3D 12.14%</title><line class="pair" x1="1207.24" x2="1207.24" y1="375.56" y2="469.29"/>
+<circle class="ours" cx="1204.84" cy="375.56" r="4"/>
+<circle class="react" cx="1209.64" cy="469.29" r="4"/>
+</g>
+<g><title>f3d64c30f8: Segment-Snap 30.65%, REACT3D 4.17%</title><line class="pair" x1="1239.05" x2="1239.05" y1="376.73" y2="509.17"/>
+<circle class="ours" cx="1236.65" cy="376.73" r="4"/>
+<circle class="react" cx="1241.45" cy="509.17" r="4"/>
+<text class="label" transform="translate(1242.05 576.00) rotate(60)">f3d64c</text>
+</g>
+<g><title>9071e139d9: Segment-Snap 14.17%, REACT3D 2.50%</title><line class="pair" x1="1270.86" x2="1270.86" y1="459.17" y2="517.50"/>
+<circle class="ours" cx="1268.46" cy="459.17" r="4"/>
+<circle class="react" cx="1273.26" cy="517.50" r="4"/>
+</g>
+<g><title>a29cccc784: Segment-Snap 11.11%, REACT3D 0.00%</title><line class="pair" x1="1302.67" x2="1302.67" y1="474.44" y2="530.00"/>
+<circle class="ours" cx="1300.27" cy="474.44" r="4"/>
+<circle class="react" cx="1305.07" cy="530.00" r="4"/>
+</g>
+<g><title>324d07a5b3: Segment-Snap 9.52%, REACT3D 0.00%</title><line class="pair" x1="1334.48" x2="1334.48" y1="482.38" y2="530.00"/>
+<circle class="ours" cx="1332.08" cy="482.38" r="4"/>
+<circle class="react" cx="1336.88" cy="530.00" r="4"/>
+<text class="label" transform="translate(1337.48 576.00) rotate(60)">324d07</text>
+</g>
+<g><title>88627b561e: Segment-Snap 8.84%, REACT3D 7.14%</title><line class="pair" x1="1366.29" x2="1366.29" y1="485.78" y2="494.29"/>
+<circle class="ours" cx="1363.89" cy="485.78" r="4"/>
+<circle class="react" cx="1368.69" cy="494.29" r="4"/>
+</g>
+<g><title>a980334473: no ground-truth articulated part</title><path d="M1393.10 515.00 l10 10 m0 -10 l-10 10" stroke="#53616d" stroke-width="2"/><text class="label" transform="translate(1401.10 576.00) rotate(60)">a98033</text></g>
+<circle class="ours" cx="78" cy="648" r="5"/><text class="legend" x="88" y="652">Segment-Snap</text>
+<circle class="react" cx="233" cy="648" r="5"/><text class="legend" x="243" y="652">REACT3D</text>
+<circle class="zero" cx="363" cy="648" r="5"/><text class="legend" x="373" y="652">certified zero REACT3D predictions</text>
+<text class="legend" x="668" y="652">× no ground-truth articulated part</text>
+</svg>

@@ -24,7 +24,7 @@
       </a>
       <nav aria-label="Primary navigation">
         <a href="#method">Method</a>
-        <a href="#results">Results</a>
+        <a href="#comparison">Results</a>
         <a href="#qualitative">Examples</a>
         <a class="nav-paper" href="https://arxiv.org/abs/2609.25247" target="_blank" rel="noopener">Paper <span aria-hidden="true">↗</span></a>
       </nav>
@@ -56,6 +56,7 @@
         <a class="button button-secondary" data-resource="code" href="https://github.com/HyoKong/Segment-Snap" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/code.svg" width="20" height="20" alt="" aria-hidden="true">Code <span aria-hidden="true">↗</span></a>
         <a class="button button-secondary" data-resource="huggingface" href="https://huggingface.co/imsuperkong/Segment-Snap" target="_blank" rel="noopener"><img class="resource-icon" src="assets/icons/huggingface.svg" width="20" height="20" alt="" aria-hidden="true">Hugging Face <span aria-hidden="true">↗</span></a>
       </div>
+      <a class="video-jump" href="#video"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="m8 6 6 4-6 4Z"/></svg>Watch the 73-second overview <span aria-hidden="true">↓</span></a>
       <figure class="hero-figure" data-reveal>
         <div class="figure-topline"><span class="figure-label">One scene. Connected predictions.</span><a href="assets/teaser.svg" data-lightbox data-caption="The coupling idea: handle locations guide hinges; part context refines additional handle predictions. Gains are measured over validation, not this single illustration." aria-label="Enlarge the coupling illustration">Expand figure <span aria-hidden="true">↗</span></a></div>
         <img src="assets/teaser.svg" width="1968" height="696" alt="RGB room scan with a door. An orange arrow takes detected handle locations to hinge selection; a teal arrow takes part classes to handle-label correction. A separate joint predictor supplies extra handles." fetchpriority="high">
@@ -68,6 +69,19 @@
         <div class="gain-item gain-context"><span class="gain-direction">Part classes → handle labels</span><div class="gain-value"><span data-evidence="handle_parts_only_delta">+0.98</span><span class="gain-unit">pp</span></div><p>Part-only motion-class correction</p></div>
       </div>
       <p class="gain-footnote">Articulate3D validation · percentage-point changes in motion AP or handle AP, as labelled. Different mechanisms, not additive gains.</p>
+    </section>
+
+    <section class="video-section" id="video" aria-labelledby="video-heading">
+      <div class="container">
+        <div class="section-heading"><div><p class="section-index">The idea in 73 seconds</p><h2 id="video-heading">See the connections<br><span class="text-secondary">in motion.</span></h2></div><p>Start with a closed door. See how a handle reveals its hinge, and how part context helps find and interpret handles.</p></div>
+        <figure class="method-film">
+          <video id="method-video" controls playsinline preload="none" width="1920" height="1080" poster="assets/video-poster.jpg" aria-label="Segment-Snap method overview" aria-describedby="video-caption">
+            <source src="assets/segment-snap-web.mp4" type="video/mp4">
+            Your browser cannot play this video. <a href="assets/segment-snap-web.mp4" download>Download the method overview.</a>
+          </video>
+          <figcaption id="video-caption"><p>Method illustrations, validation results, and selected predictions. Animated motion visualizes estimates, not observed physical movement. Captions are included in the video.</p><a href="assets/segment-snap-web.mp4" download="segment-snap-overview.mp4">Download video <span aria-hidden="true">↓</span></a></figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="question-section" aria-labelledby="task-heading">
@@ -104,6 +118,178 @@
         <div><p class="mini-label">A physical clue. No motion-regression training.</p><h3>A handle helps place the hinge.</h3><p>A door handle is usually away from its hinge. We fit a box to the reliable part surface, construct candidate hinge lines, and let a nearby handle select the opposite side. Rotational axes use an upright prior; translating parts use the fitted surface’s thin direction. These explicit assumptions also define the decoder’s limits.</p></div>
         <span class="insight-tag">Training-free<br>motion decoding</span>
       </div>
+    </section>
+
+    <section class="section comparison-section container" id="comparison" aria-labelledby="comparison-heading">
+      <div class="section-heading" data-reveal><div><p class="section-index">Across real scenes</p><h2 id="comparison-heading">The same scene.<br><span class="text-secondary">A richer interaction map.</span></h2></div><p>Compare movable parts and motion against REACT3D on all <strong>42 validation scenes</strong>, then inspect the predictions from the same viewpoint.</p></div>
+      <div class="benchmark-block" data-reveal>
+        <div class="benchmark-heading"><h3>Same evaluated output. Different inputs.</h3><span class="metric-chip">AP at IoU 0.5 (%) · higher is better</span></div>
+        <p class="table-scroll-hint">Swipe the table to compare all metrics <span aria-hidden="true">→</span></p>
+        <div class="table-scroll" role="region" aria-label="Articulated-part comparison results" tabindex="0">
+          <table class="benchmark-table">
+            <caption class="sr-only">Results over all 42 validation scenes. Motion AP additionally requires correct axes and rotational hinge locations.</caption>
+            <thead><tr><th scope="col">Method</th><th scope="col">Motion AP</th><th scope="col">Part AP</th><th scope="col">Rotation</th><th scope="col">Translation</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">REACT3D</th><td data-comparison-evidence="react3d_motion_ap">8.09</td><td data-comparison-evidence="react3d_part_ap">14.46</td><td data-comparison-evidence="react3d_rotation_ap">12.29</td><td data-comparison-evidence="react3d_translation_ap">3.89</td></tr>
+              <tr class="benchmark-ours"><th scope="row">Segment–Snap <span>ours</span></th><td><strong data-comparison-evidence="ours_motion_ap">40.98</strong></td><td><strong data-comparison-evidence="ours_part_ap">47.93</strong></td><td><strong data-comparison-evidence="ours_rotation_ap">56.37</strong></td><td><strong data-comparison-evidence="ours_translation_ap">25.59</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="benchmark-context"><p><strong>Segment–Snap</strong> receives an RGB point cloud and is trained on Articulate3D. <strong>REACT3D</strong> receives RGB-D keyframes, camera poses and a mesh, without training on Articulate3D. The output and evaluator are shared; the input and training conditions are not.</p><p><strong>Motion AP</strong> checks the mask, axis and rotational hinge location. Rotation and translation are its per-class scores. The <span data-comparison-evidence="motion_delta">32.89</span>-point gap has a paired 95% scene interval of [<span data-comparison-evidence="motion_ci_low">18.49</span>, <span data-comparison-evidence="motion_ci_high">47.29</span>]. This measures scene-sampling uncertainty, not retraining variability.</p></div>
+        <details class="comparison-protocol"><summary>Timing and evaluation scope</summary><div><p>A complete articulated-part inference pass takes a median <strong><span data-comparison-evidence="ours_time_s">33.78</span> s</strong> for Segment–Snap and <strong><span data-comparison-evidence="react3d_time_s">3638.1</span> s</strong> for REACT3D. Our timed path includes superpoint extraction, the part and dense-handle networks, and motion decoding; it does not run the third predictor for extra handles. REACT3D starts from extracted keyframes, poses and mesh and includes its 13 stages.</p><p>All 42 scenes are retained, including three with verified empty REACT3D predictions. Twenty scenes also appear in REACT3D's authors' development lists. Our model and hyperparameter selection consulted validation data, so these are development-set comparisons. Timing is not a claim of lower GPU memory use.</p></div></details>
+      </div>
+      <div class="scene-explorer">
+        <div class="scene-explorer-heading"><div><p class="section-index">Look inside the predictions</p><h3>Four views. One shared scene.</h3></div><p>Choose a scene. Compare the RGB scan and annotations with each method’s parts and motion axes. Select any image to enlarge it.</p></div>
+        <div class="scene-tabs" data-scene-tabs hidden aria-label="Validation scene selection">
+          <button type="button" id="scene-tab-61adeff7d5" data-scene-target="scene-61adeff7d5">Scene 01</button>
+          <button type="button" id="scene-tab-419cbe7c11" data-scene-target="scene-419cbe7c11">Scene 02</button>
+          <button type="button" id="scene-tab-4a1a3a7dc5" data-scene-target="scene-4a1a3a7dc5">Scene 03</button>
+          <button type="button" id="scene-tab-8a20d62ac0" data-scene-target="scene-8a20d62ac0">Scene 04</button>
+        </div>
+        <div class="scene-legend" id="scene-legend"><p><strong>Read the predictions:</strong> saturated part colors mean a correct mask and motion; pale colors mean a matched mask with incorrect motion; gray means an unmatched prediction. A missing annotated color reveals a missed part.</p><p><span class="axis-key axis-rotation" aria-hidden="true"></span> Purple axes: rotation <span class="axis-key axis-translation" aria-hidden="true"></span> Teal axes: translation</p></div>
+        <section class="scene-panel" id="scene-61adeff7d5" data-scene-panel data-scene-id="61adeff7d5" aria-label="Scene 01 comparison">
+          <div class="scene-summary"><div><span class="mini-label">Scene 01</span><h3>31 annotated movable parts.</h3></div><p>Both methods miss annotated parts. Here, more of our displayed detections recover the correct mask and motion.</p></div>
+          <div class="scene-grid">
+            <figure class="scene-card">
+              <figcaption><strong>RGB input</strong><span>The shared scene point cloud.</span></figcaption>
+              <a href="assets/comparison/61adeff7d5-cloud.png" data-lightbox data-caption="Scene 01 · RGB input. The shared scene point cloud. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge RGB input for scene 01">
+                <img src="assets/comparison/61adeff7d5-cloud.png" width="1000" height="820" alt="RGB point cloud of validation scene 01 in the same view used for the annotations and both predictions." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card">
+              <figcaption><strong>Ground truth</strong><span>Annotated parts and their motion axes.</span></figcaption>
+              <a href="assets/comparison/61adeff7d5-gt_axes.png" data-lightbox data-caption="Scene 01 · Ground truth. Annotated parts and their motion axes. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge Ground truth for scene 01">
+                <img src="assets/comparison/61adeff7d5-gt_axes.png" width="1000" height="820" alt="Annotated movable parts and rotation or translation axes for validation scene 01." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card scene-card-ours">
+              <figcaption><strong>Segment–Snap</strong><span>10 matched of 15 displayed predictions.</span></figcaption>
+              <a href="assets/comparison/61adeff7d5-ours.png" data-lightbox data-caption="Scene 01 · Segment–Snap. 10 matched of 15 displayed predictions. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge Segment–Snap for scene 01">
+                <img src="assets/comparison/61adeff7d5-ours.png" width="1000" height="820" alt="Segment-Snap part masks and motion axes in validation scene 01; saturated colors mark predictions that pass all motion checks." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card">
+              <figcaption><strong>REACT3D</strong><span>1 matched of 5 predictions.</span></figcaption>
+              <a href="assets/comparison/61adeff7d5-react3d.png" data-lightbox data-caption="Scene 01 · REACT3D. 1 matched of 5 predictions. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge REACT3D for scene 01">
+                <img src="assets/comparison/61adeff7d5-react3d.png" width="1000" height="820" alt="REACT3D part masks and motion axes in validation scene 01; gray marks unmatched detections and pale colors mark motion failures." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+          </div>
+        </section>
+        <section class="scene-panel" id="scene-419cbe7c11" data-scene-panel data-scene-id="419cbe7c11" aria-label="Scene 02 comparison">
+          <div class="scene-summary"><div><span class="mini-label">Scene 02</span><h3>13 annotated movable parts.</h3></div><p>The paired views expose differences in part extent and motion parameters, not just the number of detected objects.</p></div>
+          <div class="scene-grid">
+            <figure class="scene-card">
+              <figcaption><strong>RGB input</strong><span>The shared scene point cloud.</span></figcaption>
+              <a href="assets/comparison/419cbe7c11-cloud.png" data-lightbox data-caption="Scene 02 · RGB input. The shared scene point cloud. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge RGB input for scene 02">
+                <img src="assets/comparison/419cbe7c11-cloud.png" width="1000" height="820" alt="RGB point cloud of validation scene 02 in the same view used for the annotations and both predictions." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card">
+              <figcaption><strong>Ground truth</strong><span>Annotated parts and their motion axes.</span></figcaption>
+              <a href="assets/comparison/419cbe7c11-gt_axes.png" data-lightbox data-caption="Scene 02 · Ground truth. Annotated parts and their motion axes. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge Ground truth for scene 02">
+                <img src="assets/comparison/419cbe7c11-gt_axes.png" width="1000" height="820" alt="Annotated movable parts and rotation or translation axes for validation scene 02." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card scene-card-ours">
+              <figcaption><strong>Segment–Snap</strong><span>10 matched of 10 displayed predictions.</span></figcaption>
+              <a href="assets/comparison/419cbe7c11-ours.png" data-lightbox data-caption="Scene 02 · Segment–Snap. 10 matched of 10 displayed predictions. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge Segment–Snap for scene 02">
+                <img src="assets/comparison/419cbe7c11-ours.png" width="1000" height="820" alt="Segment-Snap part masks and motion axes in validation scene 02; saturated colors mark predictions that pass all motion checks." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card">
+              <figcaption><strong>REACT3D</strong><span>2 matched of 6 predictions.</span></figcaption>
+              <a href="assets/comparison/419cbe7c11-react3d.png" data-lightbox data-caption="Scene 02 · REACT3D. 2 matched of 6 predictions. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge REACT3D for scene 02">
+                <img src="assets/comparison/419cbe7c11-react3d.png" width="1000" height="820" alt="REACT3D part masks and motion axes in validation scene 02; gray marks unmatched detections and pale colors mark motion failures." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+          </div>
+        </section>
+        <section class="scene-panel" id="scene-4a1a3a7dc5" data-scene-panel data-scene-id="4a1a3a7dc5" aria-label="Scene 03 comparison">
+          <div class="scene-summary"><div><span class="mini-label">Scene 03</span><h3>9 annotated movable parts.</h3></div><p>A visible prediction is not necessarily a correct interaction: it must pass both the part-mask and motion checks.</p></div>
+          <div class="scene-grid">
+            <figure class="scene-card">
+              <figcaption><strong>RGB input</strong><span>The shared scene point cloud.</span></figcaption>
+              <a href="assets/comparison/4a1a3a7dc5-cloud.png" data-lightbox data-caption="Scene 03 · RGB input. The shared scene point cloud. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge RGB input for scene 03">
+                <img src="assets/comparison/4a1a3a7dc5-cloud.png" width="1000" height="820" alt="RGB point cloud of validation scene 03 in the same view used for the annotations and both predictions." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card">
+              <figcaption><strong>Ground truth</strong><span>Annotated parts and their motion axes.</span></figcaption>
+              <a href="assets/comparison/4a1a3a7dc5-gt_axes.png" data-lightbox data-caption="Scene 03 · Ground truth. Annotated parts and their motion axes. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge Ground truth for scene 03">
+                <img src="assets/comparison/4a1a3a7dc5-gt_axes.png" width="1000" height="820" alt="Annotated movable parts and rotation or translation axes for validation scene 03." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card scene-card-ours">
+              <figcaption><strong>Segment–Snap</strong><span>7 matched of 9 displayed predictions.</span></figcaption>
+              <a href="assets/comparison/4a1a3a7dc5-ours.png" data-lightbox data-caption="Scene 03 · Segment–Snap. 7 matched of 9 displayed predictions. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge Segment–Snap for scene 03">
+                <img src="assets/comparison/4a1a3a7dc5-ours.png" width="1000" height="820" alt="Segment-Snap part masks and motion axes in validation scene 03; saturated colors mark predictions that pass all motion checks." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card">
+              <figcaption><strong>REACT3D</strong><span>0 matched of 7 predictions.</span></figcaption>
+              <a href="assets/comparison/4a1a3a7dc5-react3d.png" data-lightbox data-caption="Scene 03 · REACT3D. 0 matched of 7 predictions. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge REACT3D for scene 03">
+                <img src="assets/comparison/4a1a3a7dc5-react3d.png" width="1000" height="820" alt="REACT3D part masks and motion axes in validation scene 03; gray marks unmatched detections and pale colors mark motion failures." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+          </div>
+        </section>
+        <section class="scene-panel" id="scene-8a20d62ac0" data-scene-panel data-scene-id="8a20d62ac0" aria-label="Scene 04 comparison">
+          <div class="scene-summary"><div><span class="mini-label">Scene 04</span><h3>11 annotated movable parts.</h3></div><p>Our predictions recover more valid part-motion instances in this example, but some annotated parts remain missing.</p></div>
+          <div class="scene-grid">
+            <figure class="scene-card">
+              <figcaption><strong>RGB input</strong><span>The shared scene point cloud.</span></figcaption>
+              <a href="assets/comparison/8a20d62ac0-cloud.png" data-lightbox data-caption="Scene 04 · RGB input. The shared scene point cloud. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge RGB input for scene 04">
+                <img src="assets/comparison/8a20d62ac0-cloud.png" width="1000" height="820" alt="RGB point cloud of validation scene 04 in the same view used for the annotations and both predictions." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card">
+              <figcaption><strong>Ground truth</strong><span>Annotated parts and their motion axes.</span></figcaption>
+              <a href="assets/comparison/8a20d62ac0-gt_axes.png" data-lightbox data-caption="Scene 04 · Ground truth. Annotated parts and their motion axes. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge Ground truth for scene 04">
+                <img src="assets/comparison/8a20d62ac0-gt_axes.png" width="1000" height="820" alt="Annotated movable parts and rotation or translation axes for validation scene 04." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card scene-card-ours">
+              <figcaption><strong>Segment–Snap</strong><span>7 matched of 8 displayed predictions.</span></figcaption>
+              <a href="assets/comparison/8a20d62ac0-ours.png" data-lightbox data-caption="Scene 04 · Segment–Snap. 7 matched of 8 displayed predictions. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge Segment–Snap for scene 04">
+                <img src="assets/comparison/8a20d62ac0-ours.png" width="1000" height="820" alt="Segment-Snap part masks and motion axes in validation scene 04; saturated colors mark predictions that pass all motion checks." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+            <figure class="scene-card">
+              <figcaption><strong>REACT3D</strong><span>0 matched of 3 predictions.</span></figcaption>
+              <a href="assets/comparison/8a20d62ac0-react3d.png" data-lightbox data-caption="Scene 04 · REACT3D. 0 matched of 3 predictions. Same evaluation point cloud and camera. Saturated part colors pass mask and motion checks; pale colors pass the mask check but fail motion; gray predictions are unmatched." aria-label="Enlarge REACT3D for scene 04">
+                <img src="assets/comparison/8a20d62ac0-react3d.png" width="1000" height="820" alt="REACT3D part masks and motion axes in validation scene 04; gray marks unmatched detections and pale colors mark motion failures." loading="lazy">
+                <span class="scene-zoom" aria-hidden="true">+</span>
+              </a>
+            </figure>
+          </div>
+        </section>
+        <p class="scene-selection-note">These four favorable examples follow a fixed ranking by the difference in displayed matched instances, among scenes with at least five annotated parts. Our display threshold is confidence ≥ 0.50; every REACT3D prediction is shown. The plot below reports all scenes, not just these examples.</p>
+      </div>
+      <details class="all-scenes-details" id="all-scenes">
+        <summary><span>See the complete picture</span><span>All 42 validation scenes</span></summary>
+        <figure class="all-scenes-figure">
+          <a href="assets/comparison/all-scenes-motion.svg" data-lightbox data-caption="Per-scene motion AP over the complete validation set, sorted by Segment-Snap's score. Teal: Segment-Snap; brown: REACT3D. Hollow markers identify certified empty REACT3D predictions. The scene without an annotated part is marked separately, not assigned an AP of zero." aria-label="Enlarge the complete per-scene comparison">
+            <img src="assets/comparison/all-scenes-motion.svg" width="1440" height="680" alt="Paired motion AP for all 42 validation scenes, with Segment-Snap in teal and REACT3D in brown. Empty predictions and the scene without ground-truth parts are marked separately." loading="lazy">
+          </a>
+          <figcaption>Each pair corresponds to one scene. Three verified empty REACT3D outputs remain in the evaluation; the scene with no annotated parts is marked separately. Per-scene AP values are not averaged to obtain the pooled benchmark AP.</figcaption>
+        </figure>
+      </details>
     </section>
 
     <section class="results-section" id="results" aria-labelledby="results-heading">

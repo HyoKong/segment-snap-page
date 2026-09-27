@@ -1,17 +1,17 @@
 /* Progressive enhancement only: content, figures and paper work without JS. */
 (() => {
-  const tabList = document.querySelector('[data-gallery-tabs]');
-  const tabs = [...document.querySelectorAll('[data-panel]')];
-  const panels = [...document.querySelectorAll('[data-gallery-panel]')];
-
-  if (tabList && tabs.length === panels.length) {
+  const setupTabs = (listSelector, buttonSelector, targetAttribute) => {
+    const tabList = document.querySelector(listSelector);
+    if (!tabList) return;
+    const tabs = [...tabList.querySelectorAll(buttonSelector)];
+    const panels = tabs.map((tab) => document.getElementById(tab.getAttribute(targetAttribute)));
+    if (!tabs.length || panels.some((panel) => !panel)) return;
     const activate = (index, focus = false) => {
       tabs.forEach((tab, position) => {
         const selected = position === index;
         tab.setAttribute('aria-selected', String(selected));
         tab.tabIndex = selected ? 0 : -1;
-        const panel = document.getElementById(tab.dataset.panel);
-        panel.hidden = !selected;
+        panels[position].hidden = !selected;
       });
       if (focus) tabs[index].focus();
     };
@@ -19,7 +19,7 @@
     tabList.hidden = false;
     tabList.setAttribute('role', 'tablist');
     tabs.forEach((tab, index) => {
-      const panel = document.getElementById(tab.dataset.panel);
+      const panel = panels[index];
       tab.setAttribute('role', 'tab');
       tab.setAttribute('aria-controls', panel.id);
       panel.setAttribute('role', 'tabpanel');
@@ -40,7 +40,10 @@
       });
     });
     activate(0);
-  }
+  };
+
+  setupTabs('[data-gallery-tabs]', '[data-panel]', 'data-panel');
+  setupTabs('[data-scene-tabs]', '[data-scene-target]', 'data-scene-target');
 
   // Show complete panels: the source projections are not pixel-registered.
   const comparison = document.querySelector('[data-comparison]');
